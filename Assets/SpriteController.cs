@@ -22,6 +22,11 @@ public class SpriteController : MonoBehaviour {
         mousePosition.z = 10f;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         transform.position = mousePosition;
+        gameObject.GetComponent<SpringJoint2D>().enabled = false;
 
+    }
+
+    public void EndDrag() {
+        gameObject.GetComponent<SpringJoint2D>().enabled = true;
     }
 }
