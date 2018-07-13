@@ -25,14 +25,13 @@ public class GrapeController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        Debug.Log(playerState);
 		switch(playerState) {
             case PlayerState.WAIT:
 
                 //スプライトのタッチを禁止
                 spriteManager.GetComponent<SpriteManager>().ChangeSpritesIsTouchable(false);
-                anim.Play("Enter");
-                animInfo = this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
-                if(animInfo.normalizedTime >= 1.0f) {
+                if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Enter")) {
                     GoNextState();
                 }
                 break;
@@ -49,7 +48,7 @@ public class GrapeController : MonoBehaviour {
                 //spriteManager.GetComponent<SpriteManager>().ChangeSpritesIsTouchable(false);
                 anim.Play("Jump");
                 animInfo = this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
-                if (animInfo.normalizedTime >= 1.0f) {
+                if (!animInfo.IsName("Base Layer.Jump") && !animInfo.IsName("Base Layer.Leave")) {
                     GoNextState();
                 }
                 break;
@@ -57,9 +56,18 @@ public class GrapeController : MonoBehaviour {
 	}
 
     public void GoNextState() {
-        if (playerState == PlayerState.WAIT) playerState = PlayerState.PLAY;
-        if (playerState == PlayerState.PLAY) playerState = PlayerState.CLEAR;
-        if (playerState == PlayerState.CLEAR) playerState = PlayerState.WAIT;
+        if (playerState == PlayerState.WAIT) {
+            playerState = PlayerState.PLAY;
+            return;
+        }
+        else if (playerState == PlayerState.PLAY) {
+            playerState = PlayerState.CLEAR;
+            return;
+        }
+        else if (playerState == PlayerState.CLEAR) {
+            playerState = PlayerState.WAIT;
+            return;
+        }
     }
 
 }

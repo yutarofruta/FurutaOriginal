@@ -20,7 +20,6 @@ public class SpriteManager : MonoBehaviour {
 
         for (int i = 0; i < sprites.Length; i++) {
             sprites[i].isTouchable = b;
-            Debug.Log(b);
         }
 
     }
