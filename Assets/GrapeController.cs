@@ -7,7 +7,7 @@ public class GrapeController : MonoBehaviour {
     Animator anim;
     AnimatorStateInfo animInfo;
 
-    public GameObject sprite;
+    public GameObject spriteManager;
 
     public enum PlayerState {
         WAIT,
@@ -29,7 +29,7 @@ public class GrapeController : MonoBehaviour {
             case PlayerState.WAIT:
 
                 //スプライトのタッチを禁止
-                sprite.GetComponent<SpriteController>().isTouchable = false;
+                spriteManager.GetComponent<SpriteManager>().ChangeSpritesIsTouchable(false);
                 anim.Play("Enter");
                 animInfo = this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
                 if(animInfo.normalizedTime >= 1.0f) {
@@ -38,15 +38,15 @@ public class GrapeController : MonoBehaviour {
                 break;
 
             case PlayerState.PLAY:
-                
+
                 //スプライトのタッチを許可
-                sprite.GetComponent<SpriteController>().isTouchable = true;
+                spriteManager.GetComponent<SpriteManager>().ChangeSpritesIsTouchable(true);
                 break;
 
             case PlayerState.CLEAR:
 
                 //スプライトのタッチを禁止
-                sprite.GetComponent<SpriteController>().isTouchable = true;
+                //spriteManager.GetComponent<SpriteManager>().ChangeSpritesIsTouchable(false);
                 anim.Play("Jump");
                 animInfo = this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
                 if (animInfo.normalizedTime >= 1.0f) {

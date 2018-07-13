@@ -7,7 +7,6 @@ public class SpriteController : MonoBehaviour {
 
     public GameObject goal;
     public GameObject grape;
-    GrapeController grapeController;
     public Text text;
 
     public bool isTouchable = true;
@@ -15,7 +14,6 @@ public class SpriteController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         text.GetComponent<Text>().text = "2 - 1 = ?";
-        grapeController = grape.GetComponent<GrapeController>();
     }
 	
 	// Update is called once per frame
