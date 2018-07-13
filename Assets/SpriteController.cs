@@ -8,32 +8,26 @@ public class SpriteController : MonoBehaviour {
     public GameObject goal;
     public Text text;
 
-    private int qNum;
+    private bool isTouchable = true;
 
-    private enum PlayerState{WAIT, PLAY, CLEAR};
-    private PlayerState playerState;
+    Animator anim;
     
 	// Use this for initialization
 	void Start () {
-        qNum = 0;
         text.GetComponent<Text>().text = "2 - 1 = ?";
+        this.anim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        switch(playerState) {
-            case PlayerState.WAIT:
-                break;
-
-            case PlayerState.PLAY:
-                break;
-
-            case PlayerState.CLEAR:
-                break;
-        }
+        
     }
 
     public void OnDrag() {
+
+        if (!isTouchable) {
+            return;
+        }
 
         float distance = Vector3.Distance(transform.position, goal.transform.position);
         Debug.Log(distance);
@@ -42,16 +36,15 @@ public class SpriteController : MonoBehaviour {
 
             transform.position = goal.transform.position;
             text.GetComponent<Text>().text = "Correct!";
-        
-        } else {
-            if (Input.touchCount > 0) {
-
+            this.anim.SetTrigger("JumpTrigger");
+        }
+        else {
+            if (Input.touchCount > 0) { 
                 Touch touch = Input.GetTouch(0);
                 Vector3 vec = touch.position;
                 vec.z = 10f;
                 vec = Camera.main.ScreenToWorldPoint(vec);
                 transform.position = vec;
-
             }
             else if (Input.GetMouseButton(0)) {
 
@@ -63,7 +56,8 @@ public class SpriteController : MonoBehaviour {
             }
         }
 
-        gameObject.GetComponent<SpringJoint2D>().enabled = false;
+            gameObject.GetComponent<SpringJoint2D>().enabled = false;
+        
 
     }
 
