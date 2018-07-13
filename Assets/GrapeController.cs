@@ -5,19 +5,61 @@ using UnityEngine;
 public class GrapeController : MonoBehaviour {
 
     Animator anim;
+    AnimatorStateInfo animInfo;
+
+    public GameObject sprite;
+
+    public enum PlayerState {
+        WAIT,
+        PLAY,
+        CLEAR
+    }
+
+    public PlayerState playerState;
 
     // Use this for initialization
     void Start () {
-        this.anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
+        playerState = PlayerState.WAIT;
     }
 
     // Update is called once per frame
     void Update () {
-		
+		switch(playerState) {
+            case PlayerState.WAIT:
+
+                //スプライトのタッチを禁止
+                sprite.GetComponent<SpriteController>().isTouchable = false;
+                anim.Play("Enter");
+                animInfo = this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+                if(animInfo.normalizedTime >= 1.0f) {
+                    GoNextState();
+                }
+                break;
+
+            case PlayerState.PLAY:
+                
+                //スプライトのタッチを許可
+                sprite.GetComponent<SpriteController>().isTouchable = true;
+                break;
+
+            case PlayerState.CLEAR:
+
+                //スプライトのタッチを禁止
+                sprite.GetComponent<SpriteController>().isTouchable = true;
+                anim.Play("Jump");
+                animInfo = this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+                if (animInfo.normalizedTime >= 1.0f) {
+                    GoNextState();
+                }
+                break;
+        }
 	}
 
-    public void SetJumpTrigger() {
-        anim.SetTrigger("JumpTrigger");
+    public void GoNextState() {
+        if (playerState == PlayerState.WAIT) playerState = PlayerState.PLAY;
+        if (playerState == PlayerState.PLAY) playerState = PlayerState.CLEAR;
+        if (playerState == PlayerState.CLEAR) playerState = PlayerState.WAIT;
     }
 
 }

@@ -10,7 +10,7 @@ public class SpriteController : MonoBehaviour {
     GrapeController grapeController;
     public Text text;
 
-    private bool isTouchable = true;
+    public bool isTouchable = true;
         
 	// Use this for initialization
 	void Start () {
@@ -36,7 +36,7 @@ public class SpriteController : MonoBehaviour {
 
             transform.position = goal.transform.position;
             text.GetComponent<Text>().text = "Correct!";
-            grapeController.SetJumpTrigger();
+            grape.GetComponent<GrapeController>().GoNextState();
         }
         else {
             if (Input.touchCount > 0) { 
