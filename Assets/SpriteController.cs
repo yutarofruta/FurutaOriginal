@@ -6,16 +6,16 @@ using UnityEngine.UI;
 public class SpriteController : MonoBehaviour {
 
     public GameObject goal;
+    public GameObject grape;
+    GrapeController grapeController;
     public Text text;
 
     private bool isTouchable = true;
-
-    Animator anim;
-    
+        
 	// Use this for initialization
 	void Start () {
         text.GetComponent<Text>().text = "2 - 1 = ?";
-        this.anim = GetComponent<Animator>();
+        grapeController = grape.GetComponent<GrapeController>();
     }
 	
 	// Update is called once per frame
@@ -36,7 +36,7 @@ public class SpriteController : MonoBehaviour {
 
             transform.position = goal.transform.position;
             text.GetComponent<Text>().text = "Correct!";
-            this.anim.SetTrigger("JumpTrigger");
+            grapeController.SetJumpTrigger();
         }
         else {
             if (Input.touchCount > 0) { 

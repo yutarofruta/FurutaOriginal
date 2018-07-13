@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class GrapeController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    Animator anim;
+
+    // Use this for initialization
+    void Start () {
+        this.anim = GetComponent<Animator>();
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public void SetJumpTrigger() {
+        anim.SetTrigger("JumpTrigger");
+    }
 
 }
