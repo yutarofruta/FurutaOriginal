@@ -8,11 +8,12 @@ public class GrapeController : MonoBehaviour {
     AnimatorStateInfo animInfo;
 
     public GameObject spriteManager;
+    public GameObject questionManager;
 
     public enum PlayerState {
-        WAIT,
-        PLAY,
-        CLEAR
+        WAIT,   //問題準備アニメーション中
+        PLAY,   //回答中
+        CLEAR   //正解アニメーション中
     }
 
     public PlayerState playerState;
@@ -26,11 +27,14 @@ public class GrapeController : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         Debug.Log(playerState);
+
 		switch(playerState) {
             case PlayerState.WAIT:
 
                 //スプライトのタッチを禁止
                 spriteManager.GetComponent<SpriteManager>().ChangeSpritesIsTouchable(false);
+
+                //EnterAnimationが終了したらPLAYに移動
                 if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Enter")) {
                     GoNextState();
                 }
@@ -45,10 +49,11 @@ public class GrapeController : MonoBehaviour {
             case PlayerState.CLEAR:
 
                 //スプライトのタッチを禁止
-                //spriteManager.GetComponent<SpriteManager>().ChangeSpritesIsTouchable(false);
-                anim.Play("Jump");
+                spriteManager.GetComponent<SpriteManager>().ChangeSpritesIsTouchable(false);
+
+                //Idle,Jump,Leaveのすべてのアニメーションが終わったらWAITに戻る
                 animInfo = this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
-                if (!animInfo.IsName("Base Layer.Jump") && !animInfo.IsName("Base Layer.Leave")) {
+                if ((!animInfo.IsName("Idle") && !animInfo.IsName("Jump")) && !animInfo.IsName("Leave")) {
                     GoNextState();
                 }
                 break;
@@ -62,10 +67,14 @@ public class GrapeController : MonoBehaviour {
         }
         else if (playerState == PlayerState.PLAY) {
             playerState = PlayerState.CLEAR;
+            anim.SetTrigger("JumpTrigger");
+            Debug.Log("JumpTrigger");
             return;
         }
         else if (playerState == PlayerState.CLEAR) {
             playerState = PlayerState.WAIT;
+            //次の問題に移る
+            questionManager.GetComponent<Questions>().qNum++;
             return;
         }
     }

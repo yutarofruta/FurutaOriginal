@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - answer
+  - one
+  - two
+  - three
   layers:
   - Default
   - TransparentFX
