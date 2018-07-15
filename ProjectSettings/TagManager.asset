@@ -8,6 +8,9 @@ TagManager:
   - one
   - two
   - three
+  - grape
+  - melon
+  - cherry
   layers:
   - Default
   - TransparentFX

@@ -9,22 +9,38 @@ public class Questions : MonoBehaviour {
     public int qNum = 1;
     public string answerTag;
 
+    public GameObject goal;
+
+    public Sprite grapeFruit;
+    public Sprite cherryFruit;
+    public Sprite melonFruit;
+
     private void Start() {
         
     }
 
     private void Update() {
-        if(qNum == 1) {
-            qText.GetComponent<Text>().text = "Which is ONE?";
-            answerTag = "one";
+
+        if(qNum == 1) {//一問目
+
+            qText.GetComponent<Text>().text = "Which is Grape?";
+            goal.GetComponent<SpriteRenderer>().sprite = grapeFruit;
+            answerTag = "grape";
+
         }
-        else if (qNum == 2) {
-            qText.GetComponent<Text>().text = "Which is TWO?";
-            answerTag = "two";
+        else if (qNum == 2) {//二問目
+
+            qText.GetComponent<Text>().text = "Which is Cherry?";
+            goal.GetComponent<SpriteRenderer>().sprite = cherryFruit;
+            answerTag = "cherry";
+
         }
-        else if(qNum == 3) {
-            qText.GetComponent<Text>().text = "Which is THREE?";
-            answerTag = "three";
+        else if(qNum == 3) {//三問目
+
+            qText.GetComponent<Text>().text = "Which is Melon?";
+            goal.GetComponent<SpriteRenderer>().sprite = melonFruit;
+            answerTag = "melon";
+
         }
     }
 

@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Enter
+  m_Name: GrapeEnter
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -38,13 +38,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: 8.83, y: -2.97, z: 0}
+        value: {x: 10, y: -3, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 1
-        value: {x: 3.5, y: -2.97, z: 0}
+        value: {x: 5, y: -3, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -103,13 +103,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 8.83
+        value: 10
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 1
-        value: 3.5
+        value: 5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -125,13 +125,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -2.97
+        value: -3
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 1
-        value: -2.97
+        value: -3
         inSlope: 0
         outSlope: 0
         tangentMode: 136

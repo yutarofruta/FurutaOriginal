@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrapeController : MonoBehaviour {
+public class CharacterManager : MonoBehaviour {
 
     Animator anim;
     AnimatorStateInfo animInfo;
 
     public GameObject spriteManager;
     public GameObject questionManager;
+
+    //削除されるスプライト
+    public GameObject clearedSprite;
 
     public enum PlayerState {
         WAIT,   //問題準備アニメーション中
@@ -26,7 +29,7 @@ public class GrapeController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        Debug.Log(playerState);
+        //Debug.Log(playerState);
 
 		switch(playerState) {
             case PlayerState.WAIT:
@@ -73,6 +76,7 @@ public class GrapeController : MonoBehaviour {
         }
         else if (playerState == PlayerState.CLEAR) {
             playerState = PlayerState.WAIT;
+            Destroy(clearedSprite);
             //次の問題に移る
             questionManager.GetComponent<Questions>().qNum++;
             return;
