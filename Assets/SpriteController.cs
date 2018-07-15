@@ -32,7 +32,10 @@ public class SpriteController : MonoBehaviour {
     public void OnDrag() {
 
         //ドラッグされている間は拡大
-        transform.localScale = new Vector3(10, 10, 1);
+        transform.localScale = new Vector3(10, 10, 2);
+
+        //最前面に出す
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
 
         //Touchableでないときはオブジェクトを移動させない
         if (!isTouchable) {
@@ -80,6 +83,9 @@ public class SpriteController : MonoBehaviour {
         //ドラッグが終わったら縮小
         transform.localScale = new Vector3(8, 8, 1);
 
+        //元のOrder In Layerに戻す
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+
         //ドラッグが終わったらSpringJointを有効にする
         if (transform.position != goal.transform.position) {
             gameObject.GetComponent<SpringJoint2D>().enabled = true;
@@ -87,11 +93,23 @@ public class SpriteController : MonoBehaviour {
     }
 
     public void PointerDown() {
+
+        if(!isTouchable) {
+            return;
+        }
+
+        //最前面に出す
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+
         //オブジェクトが触られている間は拡大
-        transform.localScale = new Vector3(10, 10, 1);
+        transform.localScale = new Vector3(10, 10, 2);
     }
 
     public void PointerUp() {
+
+        //元のOrder In Layerに戻す
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+
         //オブジェクトが離されたら縮小
         transform.localScale = new Vector3(8, 8, 1);
     }

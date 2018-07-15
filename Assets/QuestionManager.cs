@@ -21,6 +21,8 @@ public class QuestionManager : MonoBehaviour {
 
     private void Update() {
 
+        Debug.Log(qNum);
+
         if(qNum == 1) {//一問目
 
             qText.GetComponent<Text>().text = "Which is Grape?";

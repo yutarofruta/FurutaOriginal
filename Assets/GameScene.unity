@@ -113,6 +113,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &91529116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 91529117}
+  m_Layer: 0
+  m_Name: Character
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &91529117
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 91529116}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.81729174, y: -0.42888534, z: -0.0703125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 830717972}
+  - {fileID: 820487259}
+  - {fileID: 2135941758}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &187751482
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +158,7 @@ GameObject:
   - component: {fileID: 187751486}
   - component: {fileID: 187751485}
   - component: {fileID: 187751484}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite2
   m_TagString: melon
   m_Icon: {fileID: 0}
@@ -594,12 +625,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 820487257}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.2, y: -2.29, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10.382708, y: -1.8611146, z: 0.0703125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 91529117}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &820487260
 Animator:
@@ -718,12 +749,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 830717969}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.39, y: -2.32, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.572708, y: -1.8911146, z: 0.0703125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 91529117}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &830717973
 MonoBehaviour:
@@ -827,7 +858,7 @@ GameObject:
   - component: {fileID: 1356185810}
   - component: {fileID: 1356185809}
   - component: {fileID: 1356185808}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite3
   m_TagString: cherry
   m_Icon: {fileID: 0}
@@ -1178,7 +1209,7 @@ GameObject:
   - component: {fileID: 1728346213}
   - component: {fileID: 1728346212}
   - component: {fileID: 1728346214}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite1
   m_TagString: grape
   m_Icon: {fileID: 0}
@@ -1493,7 +1524,7 @@ RectTransform:
   m_Children:
   - {fileID: 201865025}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1554,6 +1585,7 @@ GameObject:
   - component: {fileID: 2135941758}
   - component: {fileID: 2135941757}
   - component: {fileID: 2135941759}
+  - component: {fileID: 2135941760}
   m_Layer: 0
   m_Name: melon
   m_TagString: Untagged
@@ -1611,12 +1643,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2135941756}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.15, y: -2.09, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 13.332708, y: -1.6611146, z: 0.0703125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 91529117}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2135941759
 Animator:
@@ -1635,3 +1667,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &2135941760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2135941756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87f503e14a25d047866c11e991459e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteManager: {fileID: 1872308872}
+  questionManager: {fileID: 1370656552}
+  clearedSprite: {fileID: 0}
+  playerState: 0
