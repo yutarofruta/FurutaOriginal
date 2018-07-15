@@ -7,6 +7,8 @@ public class SpriteController : MonoBehaviour {
 
     public GameObject goal;
     public GameObject grape;
+    public GameObject cherry;
+    public GameObject melon;
     public GameObject questionManager;
     public Text text;
 
@@ -19,6 +21,10 @@ public class SpriteController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if(gameObject.tag == answerTag) {
+
+        }
         
 
     }
@@ -43,6 +49,8 @@ public class SpriteController : MonoBehaviour {
         if (distance < 0.7f && gameObject.tag == answerTag) {
             transform.position = goal.transform.position;
             grape.GetComponent<CharacterManager>().GoNextState();
+            cherry.GetComponent<CharacterManager>().GoNextState();
+            melon.GetComponent<CharacterManager>().GoNextState();
             grape.GetComponent<CharacterManager>().clearedSprite = this.gameObject;
             transform.localScale = new Vector3(8, 8, 1);
 
