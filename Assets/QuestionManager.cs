@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Questions : MonoBehaviour {
+public class QuestionManager : MonoBehaviour {
 
     public Text qText;
     public int qNum = 1;

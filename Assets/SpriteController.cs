@@ -36,8 +36,8 @@ public class SpriteController : MonoBehaviour {
         //動かしているオブジェクトとゴールの場所までの距離
         float distance = Vector3.Distance(transform.position, goal.transform.position);
 
-        //正解のタグをQuestionManagerから取得
-        answerTag = questionManager.GetComponent<Questions>().answerTag.ToString();
+        //正解オブジェクトのタグをQuestionManagerから取得
+        answerTag = questionManager.GetComponent<QuestionManager>().answerTag.ToString();
 
         //正解のオブジェクトがゴールの十分近くに来たら、静止してCLEARに移る
         if (distance < 0.7f && gameObject.tag == answerTag) {

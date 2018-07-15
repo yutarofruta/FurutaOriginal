@@ -78,7 +78,7 @@ public class CharacterManager : MonoBehaviour {
             playerState = PlayerState.WAIT;
             Destroy(clearedSprite);
             //次の問題に移る
-            questionManager.GetComponent<Questions>().qNum++;
+            questionManager.GetComponent<QuestionManager>().qNum++;
             return;
         }
     }
