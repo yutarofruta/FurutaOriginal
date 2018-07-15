@@ -7,4 +7,8 @@ AnimatorOverrideController:
   m_PrefabInternal: {fileID: 0}
   m_Name: CherryAnimatorController
   m_Controller: {fileID: 9100000, guid: 391dd3894e7b5364a996c85e677a7ea3, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 3ea63d09eeb56f14b8a9b0f9708bb84e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c1bdf3cddcdec6a4486dea47aacf5335, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b102e387bcdc99340be1c9d3f5a3cd9b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cc9d8e2e303234a4db0c458620beab30, type: 2}
