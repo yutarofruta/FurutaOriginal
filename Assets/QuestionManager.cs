@@ -15,14 +15,29 @@ public class QuestionManager : MonoBehaviour {
     public Sprite cherryFruit;
     public Sprite melonFruit;
 
+    public QuestionObject[] questions;
+    public SpriteRenderer[] answerImages;
+    GameObject activeCharacter;
+
     private void Start() {
-        
+        for (int i = 0; i < questions.Length; i++){
+            answerImages[i].sprite = questions[i].answerSprite;
+        }
     }
 
     private void Update() {
 
         Debug.Log(qNum);
 
+        QuestionObject questionObject = questions[qNum - 1];
+
+        qText.GetComponent<Text>().text = questionObject.questionMessage;
+        goal.GetComponent<SpriteRenderer>().sprite = questionObject.answerSprite;
+        answerTag = questionObject.asnwerTag;
+        if(activeCharacter == null)
+            activeCharacter = Instantiate(questionObject.Character) as GameObject;
+
+        /*
         if(qNum == 1) {//一問目
 
             qText.GetComponent<Text>().text = "Which is Grape?";
@@ -44,8 +59,13 @@ public class QuestionManager : MonoBehaviour {
             answerTag = "melon";
 
         }
+        */
     }
 
+    public void GoNextQuestion(){
+        qNum++;
+        Destroy(activeCharacter);
+    }
 
 
 }
