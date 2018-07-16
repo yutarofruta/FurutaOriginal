@@ -10,8 +10,6 @@ public class SpriteManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        //動かすオブジェクトをすべて読み込み
-        sprites = GetComponentsInChildren<SpriteController>();
     }
 	
 	// Update is called once per frame
@@ -20,6 +18,9 @@ public class SpriteManager : MonoBehaviour {
 	}
 
     public void ChangeSpritesIsTouchable(bool b) {
+
+        //動かすオブジェクトをすべて読み込み
+        sprites = GetComponentsInChildren<SpriteController>();
 
         //読み込んだ全ての動かすオブジェクトに対し、Touchableを変更
         for (int i = 0; i < sprites.Length; i++) {

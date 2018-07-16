@@ -12,6 +12,9 @@ public class GameDirector : MonoBehaviour {
     //削除されるスプライト
     public GameObject clearedSprite;
 
+    //現在画面上にいるキャラクター
+    GameObject activeCharacter;
+
     public enum PlayerState {
         WAIT,   //問題準備アニメーション中
         PLAY,   //回答中
@@ -24,9 +27,9 @@ public class GameDirector : MonoBehaviour {
     void Start () {
         playerState = PlayerState.WAIT;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         //Debug.Log(playerState);
 
         switch (playerState) {
@@ -35,11 +38,9 @@ public class GameDirector : MonoBehaviour {
                 //スプライトのタッチを禁止
                 spriteManager.GetComponent<SpriteManager>().ChangeSpritesIsTouchable(false);
 
-
                 //今主役のキャラクターのアニメーションを取る
-                /*
-                animInfo = 
-                */
+                activeCharacter = questionManager.GetComponent<QuestionManager>().activeCharacter;
+                animInfo = activeCharacter.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
 
                 //EnterAnimationが終了したらPLAYに移動
                 if (!animInfo.IsName("Enter")) {
@@ -59,9 +60,8 @@ public class GameDirector : MonoBehaviour {
                 spriteManager.GetComponent<SpriteManager>().ChangeSpritesIsTouchable(false);
 
                 //今の主役のキャラクターのアニメーションを取る
-                /*
-                animInfo = this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
-                */
+                activeCharacter = questionManager.GetComponent<QuestionManager>().activeCharacter;
+                animInfo = activeCharacter.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
 
                 //Idle,Jump,Leaveのすべてのアニメーションが終わったらWAITに戻る
                 if ((!animInfo.IsName("Idle") && !animInfo.IsName("Jump")) && !animInfo.IsName("Leave")) {
@@ -78,15 +78,19 @@ public class GameDirector : MonoBehaviour {
         }
         else if (playerState == PlayerState.PLAY) {
             playerState = PlayerState.CLEAR;
-            //anim.SetTrigger("JumpTrigger");
+            
+            //ジャンプのアニメーションを実行
+            activeCharacter.GetComponent<CharacterManager>().GetComponent<Animator>().SetTrigger("JumpTrigger");
+
             Debug.Log("JumpTrigger");
             return;
         }
         else if (playerState == PlayerState.CLEAR) {
             playerState = PlayerState.WAIT;
             Destroy(clearedSprite);
+
             //次の問題に移る
-            questionManager.GetComponent<QuestionManager>().qNum++;
+            questionManager.GetComponent<QuestionManager>().GoNextQuestion();
             return;
         }
     }

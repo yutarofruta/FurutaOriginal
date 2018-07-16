@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4343213400615926}
   - component: {fileID: 114081996216889880}
   m_Layer: 0
-  m_Name: GrapeQuestion
+  m_Name: CherryQuestion 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f5e9594c3ef4543bada927d1035c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionMessage: Which is Grape?
-  answerSprite: {fileID: 21300000, guid: 42392be795a2ff04197537a8351988ee, type: 3}
-  asnwerTag: grape
-  Character: {fileID: 1402812493537280, guid: c3b9946f841434db0a1e53fec2a3a934, type: 2}
+  questionMessage: Which is Cherry?
+  answerSprite: {fileID: 21300000, guid: 97769e9a4d420415eb2d620e742d19e3, type: 3}
+  goalSprite: {fileID: 21300000, guid: 99eb39d0ed8433648a80b3f7ce580adc, type: 3}
+  answerTag: cherry
+  Character: {fileID: 1936957099252816, guid: ab627114ea71b4754974f09ae56a710d, type: 2}

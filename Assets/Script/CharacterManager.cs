@@ -7,9 +7,6 @@ public class CharacterManager : MonoBehaviour {
     Animator anim;
     AnimatorStateInfo animInfo;
 
-    public GameObject spriteManager;
-    public GameObject questionManager;
-
 
     // Use this for initialization
     void Start () {
@@ -21,10 +18,8 @@ public class CharacterManager : MonoBehaviour {
         
 	}
 
-    public void GetAnimInfo() {
-        if(gameObject.tag == questionManager.GetComponent<QuestionManager>().answerTag) {
-            animInfo = gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
-        }
+    public void SetJumpTrigger() {
+        anim.SetTrigger("JumpTrigger");
     }
 
 }
