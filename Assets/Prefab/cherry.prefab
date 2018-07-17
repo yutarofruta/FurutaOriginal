@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212595030151918822}
   - component: {fileID: 95374673633849188}
   - component: {fileID: 114484780593348382}
-  - component: {fileID: 114056680143900888}
   m_Layer: 0
   m_Name: cherry
   m_TagString: cherry
@@ -60,21 +59,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114056680143900888
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1936957099252816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de4e2cdb5d4f1624b9f13604ac7d076b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteManager: {fileID: 0}
-  questionManager: {fileID: 0}
-  clearedSprite: {fileID: 0}
-  playerState: 0
 --- !u!114 &114484780593348382
 MonoBehaviour:
   m_ObjectHideFlags: 1

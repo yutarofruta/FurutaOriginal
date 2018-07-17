@@ -24,16 +24,16 @@ public class SpriteController : MonoBehaviour {
 
     public void OnDrag() {
 
+        //Touchableでないときはオブジェクトを移動させない
+        if (!isTouchable) {
+            return;
+        }
+
         //ドラッグされている間は拡大
         transform.localScale = new Vector3(10, 10, 2);
 
         //最前面に出す
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
-
-        //Touchableでないときはオブジェクトを移動させない
-        if (!isTouchable) {
-            return;
-        }
 
         //動かしているオブジェクトとゴールの場所までの距離
         float distance = Vector3.Distance(transform.position, goal.transform.position);

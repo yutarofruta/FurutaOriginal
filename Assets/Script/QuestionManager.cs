@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class QuestionManager : MonoBehaviour {
 
     public Text qText;  //問題表示用テキスト
+    public Text finText;    //ゲーム終了時に出すテキスト
     private int qNum = 1;    　//問題番号
+    public int maxNum;
     public string answerTag;    //それぞれの問題の果物を確かめるタグ
 
     public GameObject goal;     //オブジェクトを持っていく場所
@@ -23,37 +25,60 @@ public class QuestionManager : MonoBehaviour {
             selectionImages[i].sprite = questions[i].answerSprite;
             selectionImages[i].tag = questions[i].answerTag;
         }
+
+        //問題の数を取得
+        maxNum = questions.Length;
     }
 
     private void Update() {
 
         //Debug.Log(qNum);
 
-        //今の対応する問題のデータを持ったquestionObjectを決める
-        QuestionObject questionObject = questions[qNum - 1];
+        if(qNum <= maxNum) {
 
-        //問題文を呼び出す
-        qText.GetComponent<Text>().text = questionObject.questionMessage;
+            //今の対応する問題のデータを持ったquestionObjectを決める
+            QuestionObject questionObject = questions[qNum - 1];
 
-        //goalの果物を呼び出す
-        goal.GetComponent<SpriteRenderer>().sprite = questionObject.goalSprite;
+            //問題文を呼び出す
+            qText.GetComponent<Text>().text = questionObject.questionMessage;
 
-        //タグを呼び出す
-        answerTag = questionObject.answerTag;
+            //goalの果物を呼び出す
+            goal.GetComponent<SpriteRenderer>().sprite = questionObject.goalSprite;
 
-        //現在activeなキャラクターがいない(次の問題に移った時)場合に、Characterを生成する
-        if(activeCharacter == null) {
-            activeCharacter = Instantiate(questionObject.Character) as GameObject;
+            //タグを呼び出す
+            answerTag = questionObject.answerTag;
+
+            //現在activeなキャラクターがいない(次の問題に移った時)場合に、Characterを生成する
+            if (activeCharacter == null) {
+                activeCharacter = Instantiate(questionObject.Character) as GameObject;
+            }
         }
+        
 
     }
 
     public void GoNextQuestion(){
 
+        //問題番号を1増やす
         qNum++;
 
         //次の問題に移るタイミングで、今のactiveCharacterを消去する
         Destroy(activeCharacter);
+
+        if (qNum > maxNum) {
+
+            //問題文を消す
+            qText.GetComponent<Text>().text = "";
+
+            //ゴールのスプライトを消す
+            Destroy(goal);
+
+            //問題文を消す
+            finText.GetComponent<Text>().text = "AWESOME!";
+
+
+        }
+
 
     }
 

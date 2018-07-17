@@ -30,7 +30,7 @@ public class GameDirector : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        //Debug.Log(playerState);
+        Debug.Log(playerState);
 
         switch (playerState) {
             case PlayerState.WAIT:
@@ -38,14 +38,22 @@ public class GameDirector : MonoBehaviour {
                 //スプライトのタッチを禁止
                 spriteManager.GetComponent<SpriteManager>().ChangeSpritesIsTouchable(false);
 
+                //キャラクターを定位置まで移動
+
+
+                /*
                 //今主役のキャラクターのアニメーションを取る
                 activeCharacter = questionManager.GetComponent<QuestionManager>().activeCharacter;
-                animInfo = activeCharacter.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+                if(activeCharacter != null) {
+                    animInfo = activeCharacter.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+                }
 
                 //EnterAnimationが終了したらPLAYに移動
                 if (!animInfo.IsName("Enter")) {
                     GoNextState();
                 }
+                */
+
                 break;
 
             case PlayerState.PLAY:
@@ -61,7 +69,9 @@ public class GameDirector : MonoBehaviour {
 
                 //今の主役のキャラクターのアニメーションを取る
                 activeCharacter = questionManager.GetComponent<QuestionManager>().activeCharacter;
-                animInfo = activeCharacter.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+                if (activeCharacter != null) {
+                    animInfo = activeCharacter.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+                }
 
                 //Idle,Jump,Leaveのすべてのアニメーションが終わったらWAITに戻る
                 if ((!animInfo.IsName("Idle") && !animInfo.IsName("Jump")) && !animInfo.IsName("Leave")) {
