@@ -38,7 +38,8 @@ public class GameDirector : MonoBehaviour {
                 //スプライトのタッチを禁止
                 spriteManager.GetComponent<SpriteManager>().ChangeSpritesIsTouchable(false);
 
-                //キャラクターを定位置まで移動
+                //キャラクターが定位置まで移動したらPLAYに移る
+                
 
 
                 /*

@@ -18,7 +18,6 @@ public class CharacterManager : MonoBehaviour {
     void Update () {
         Debug.Log(transform.position.x);
         if(gameObject.transform.position.x > stopPos) {
-            Debug.Log("ここまで処理は届いている");
             transform.Translate(Vector3.left * Time.deltaTime);
         } else {
             anim.SetTrigger("IdleTrigger");
