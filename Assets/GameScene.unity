@@ -219,8 +219,7 @@ Rigidbody2D:
 --- !u!114 &178992031
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114465425822686406, guid: 82bbe7abc0659a64da4834023c3b9390,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 178992026}
   m_Enabled: 1
@@ -229,9 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 1161720993}
-  gameDirector: {fileID: 974573737}
+  character: {fileID: 0}
   questionManager: {fileID: 1370656552}
-  text: {fileID: 201865026}
   answerTag: 
   isTouchable: 1
 --- !u!114 &178992032
@@ -532,45 +530,55 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
---- !u!1 &974573737
+--- !u!1 &818232932
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 974573739}
-  - component: {fileID: 974573738}
+  - component: {fileID: 818232934}
+  - component: {fileID: 818232933}
   m_Layer: 0
-  m_Name: GameDirector
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &974573738
-MonoBehaviour:
+--- !u!61 &818232933
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 974573737}
+  m_GameObject: {fileID: 818232932}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de4e2cdb5d4f1624b9f13604ac7d076b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteManager: {fileID: 1872308872}
-  questionManager: {fileID: 1370656552}
-  clearedSprite: {fileID: 0}
-  playerState: 0
---- !u!4 &974573739
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 30, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &818232934
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 974573737}
+  m_GameObject: {fileID: 818232932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2922318, y: -0.95319325, z: -0.104713865}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -893,9 +901,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 1161720993}
-  gameDirector: {fileID: 974573737}
+  character: {fileID: 0}
   questionManager: {fileID: 1370656552}
-  text: {fileID: 201865026}
   answerTag: 
   isTouchable: 1
 --- !u!114 &1604396259
@@ -1203,9 +1210,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 1161720993}
-  gameDirector: {fileID: 974573737}
+  character: {fileID: 0}
   questionManager: {fileID: 1370656552}
-  text: {fileID: 201865026}
   answerTag: 
   isTouchable: 1
 --- !u!114 &1653700923

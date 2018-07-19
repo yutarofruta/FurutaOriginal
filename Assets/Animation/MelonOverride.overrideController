@@ -6,7 +6,5 @@ AnimatorOverrideController:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: MelonOverride
-  m_Controller: {fileID: 9100000, guid: 391dd3894e7b5364a996c85e677a7ea3, type: 2}
-  m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 3ea63d09eeb56f14b8a9b0f9708bb84e, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 66bdfebf048caba43a0e135e212cca2b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8f2a387d145c03942a3c83aec5a4616e, type: 2}
+  m_Clips: []

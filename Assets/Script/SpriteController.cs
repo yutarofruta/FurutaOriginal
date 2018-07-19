@@ -6,9 +6,8 @@ using UnityEngine.UI;
 public class SpriteController : MonoBehaviour {
 
     public GameObject goal;
-    public GameObject gameDirector;
+    public GameObject character;
     public GameObject questionManager;
-    public Text text;
 
     public string answerTag;
     public bool isTouchable = true;
@@ -20,6 +19,10 @@ public class SpriteController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        //現在のキャラクターをQuestionManagerから受け取る
+        if(questionManager.GetComponent<QuestionManager>().activeCharacter != null) {
+            character = questionManager.GetComponent<QuestionManager>().activeCharacter;
+        }
     }
 
     public void OnDrag() {
@@ -44,9 +47,9 @@ public class SpriteController : MonoBehaviour {
         //正解のオブジェクトがゴールの十分近くに来たら、静止してCLEARに移る
         if (distance < 0.7f && gameObject.tag == answerTag) {
             transform.position = goal.transform.position;
-            gameDirector.GetComponent<GameDirector>().GoNextState();
+            character.GetComponent<CharacterManager>().GoNextState();
             
-            gameDirector.GetComponent<GameDirector>().clearedSprite = this.gameObject;
+            character.GetComponent<CharacterManager>().clearedSprite = this.gameObject;
             transform.localScale = new Vector3(8, 8, 1);
 
         }

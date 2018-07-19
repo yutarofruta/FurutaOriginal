@@ -21,7 +21,9 @@ GameObject:
   - component: {fileID: 4831625080663768}
   - component: {fileID: 212076611179762362}
   - component: {fileID: 95306900127563090}
-  - component: {fileID: 114292827298031658}
+  - component: {fileID: 114133674312355560}
+  - component: {fileID: 50656949323851244}
+  - component: {fileID: 61486207294602052}
   m_Layer: 0
   m_Name: grape
   m_TagString: grape
@@ -36,12 +38,57 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1183822933955618}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9, y: -3, z: 0}
+  m_LocalPosition: {x: 9, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50656949323851244
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1183822933955618}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &61486207294602052
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1183822933955618}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.65, y: 3.65}
+    newSize: {x: 2.65, y: 3.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.65, y: 3.65}
+  m_EdgeRadius: 0
 --- !u!95 &95306900127563090
 Animator:
   serializedVersion: 3
@@ -51,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 1183822933955618}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 391dd3894e7b5364a996c85e677a7ea3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8f2a387d145c03942a3c83aec5a4616e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -59,7 +106,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114292827298031658
+--- !u!114 &114133674312355560
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -67,9 +114,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1183822933955618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a87f503e14a25d047866c11e991459e1, type: 3}
+  m_Script: {fileID: 11500000, guid: de4e2cdb5d4f1624b9f13604ac7d076b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteManager: {fileID: 0}
+  questionManager: {fileID: 0}
+  clearedSprite: {fileID: 0}
+  playerState: 0
 --- !u!212 &212076611179762362
 SpriteRenderer:
   m_ObjectHideFlags: 1
