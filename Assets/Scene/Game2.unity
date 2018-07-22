@@ -217,10 +217,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groupingQuestions:
   - {fileID: 1040820971}
-  selectionImages: []
+  - {fileID: 991128725}
   leftBasket: {fileID: 2023114724}
   rightBasket: {fileID: 1382021339}
   fruit: {fileID: 1250654956398236, guid: 4952e5e6d4e03d3468cf56ed9d1b5611, type: 2}
+  fruitsParent: {fileID: 1814735531}
+--- !u!1 &991128724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 991128726}
+  - component: {fileID: 991128725}
+  m_Layer: 0
+  m_Name: GroupingQuestionObject2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &991128725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 991128724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8fbbe32bc076a745a9056d315a11cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftFruit: {fileID: 21300000, guid: 125d0ba5aa9b7dd4f8505fbd5c30d580, type: 3}
+  rightFruit: {fileID: 21300000, guid: 639a4006005135048b433dbb79c10b0d, type: 3}
+  leftFruitNum: 5
+  rightFruitNum: 3
+  leftFruitTag: banana
+  rightFruitTag: melon
+  leftFruitPos:
+  - {x: -3, y: 0, z: 0}
+  - {x: -3, y: 1, z: 0}
+  - {x: -2, y: 0, z: 0}
+  - {x: -2, y: 1, z: 0}
+  - {x: -1, y: 0, z: 0}
+  rightFruitPos:
+  - {x: 2, y: 1, z: 0}
+  - {x: 1, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+--- !u!4 &991128726
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 991128724}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1040820970
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +288,7 @@ GameObject:
   - component: {fileID: 1040820972}
   - component: {fileID: 1040820971}
   m_Layer: 0
-  m_Name: GroupingQuestionObject
+  m_Name: GroupingQuestionObject1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,6 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1382021341}
   - component: {fileID: 1382021340}
+  - component: {fileID: 1382021342}
   m_Layer: 0
   m_Name: RightBasket
   m_TagString: Untagged
@@ -347,6 +405,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1382021342
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1382021339}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.3}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.13, y: 2.12}
+    newSize: {x: 5.13, y: 2.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4, y: 0.2}
+  m_EdgeRadius: 0
 --- !u!1 &1391000070
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +527,34 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
+--- !u!1 &1814735531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1814735532}
+  m_Layer: 0
+  m_Name: FruitsParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1814735532
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1814735531}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2023114724
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,6 +564,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2023114726}
   - component: {fileID: 2023114725}
+  - component: {fileID: 2023114727}
   m_Layer: 0
   m_Name: LeftBasket
   m_TagString: Untagged
@@ -517,3 +629,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2023114727
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2023114724}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.3}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.13, y: 2.12}
+    newSize: {x: 5.13, y: 2.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4, y: 0.2}
+  m_EdgeRadius: 0
