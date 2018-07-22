@@ -8,7 +8,6 @@ public class GroupingQuestionManager : MonoBehaviour {
     private int maxNum;
 
     public GroupingQuestionObject[] groupingQuestions;      //GroupingQuestionオブジェクトのプレハブ
-    public SpriteRenderer[] selectionImages;   //動かす果物オブジェクトを入れる
 
     public GameObject leftBasket;     //左のかご
     public GameObject rightBasket;     //右のかご
@@ -17,6 +16,8 @@ public class GroupingQuestionManager : MonoBehaviour {
     private GameObject rightCharacter;     //右のキャラクター
 
     public GameObject fruit;     //sprite入れる前の果物
+
+    public GameObject fruitsParent;     //Instanceする果物の親
 
     private GameObject[] leftFruits;     //左の果物を入れる
     private GameObject[] rightFruits;    //右の果物を入れる
@@ -52,6 +53,7 @@ public class GroupingQuestionManager : MonoBehaviour {
             //左の果物を生成する
             for (int i = 0; i < questionObject.leftFruitNum; i++) {
                 leftFruits[i] = Instantiate(fruit, questionObject.leftFruitPos[i], Quaternion.identity);
+                leftFruits[i].transform.parent = fruitsParent.transform;
                 leftFruits[i].tag = questionObject.leftFruitTag;
                 leftFruits[i].GetComponent<SpriteRenderer>().sprite = questionObject.leftFruit;
                 leftFruits[i].GetComponent<SpringJoint2D>().connectedAnchor = questionObject.leftFruitPos[i];
@@ -60,6 +62,7 @@ public class GroupingQuestionManager : MonoBehaviour {
             //右の果物を生成する
             for (int i = 0; i < questionObject.rightFruitNum; i++) {
                 rightFruits[i] = Instantiate(fruit, questionObject.rightFruitPos[i], Quaternion.identity);
+                rightFruits[i].transform.parent = fruitsParent.transform;
                 rightFruits[i].tag = questionObject.rightFruitTag;
                 rightFruits[i].GetComponent<SpriteRenderer>().sprite = questionObject.rightFruit;
                 rightFruits[i].GetComponent<SpringJoint2D>().connectedAnchor = questionObject.rightFruitPos[i];

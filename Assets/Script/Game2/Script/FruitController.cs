@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class FruitController : MonoBehaviour {
 
-    private GameObject leftBasket;
-    private GameObject rightBasket;
-    private GameObject answerBasket;
+    private GameObject fruitsParent;
 
     private GameObject questionManager;
 
@@ -17,11 +15,12 @@ public class FruitController : MonoBehaviour {
     private Vector3 normalScale;
     private Vector3 expandedScale;
 
+    private int correctNum = 0;
+
     // Use this for initialization
     void Start () {
-        leftBasket = GameObject.Find("LeftBasket");
-        rightBasket = GameObject.Find("RightBasket");
         questionManager = GameObject.Find("QuestionManager");
+        fruitsParent = GameObject.Find("FruitsParent");
 
         //拡大・縮小用スケール
         normalScale = transform.localScale;
@@ -30,7 +29,9 @@ public class FruitController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
+		if(correctNum == fruitsParent.transform.childCount) {
+            questionManager.GetComponent<QuestionManager>().GoNextQuestion();
+        }
 	}
 
     public void OnDrag() {
@@ -46,38 +47,21 @@ public class FruitController : MonoBehaviour {
         //最前面に出す
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
 
-        //答えのbasketを決める
-        answerBasket = (leftBasket.tag == gameObject.tag) ? leftBasket : rightBasket;
-
-        //distanceを指定
-        float distance = Vector3.Distance(transform.position, answerBasket.transform.position);
-
-        //正解のオブジェクトがゴールの十分近くに来たら、静止してCLEARに移る
-        if (distance < 0.7f && gameObject.tag == answerBasket.tag) {
-
-            isCorrect = true;
-
-            transform.localScale = normalScale;
-
-            Debug.Log("いいぞ！");
-
+        //オブジェクトがタッチについてくる
+        if (Input.touchCount > 0) {
+            Touch touch = Input.GetTouch(0);
+            Vector3 vec = touch.position;
+            vec.z = 10f;
+            vec = Camera.main.ScreenToWorldPoint(vec);
+            transform.position = vec;
         }
-        else {  //オブジェクトがタッチについてくる
-
-            if (Input.touchCount > 0) {
-                Touch touch = Input.GetTouch(0);
-                Vector3 vec = touch.position;
-                vec.z = 10f;
-                vec = Camera.main.ScreenToWorldPoint(vec);
-                transform.position = vec;
-            }
-            else if (Input.GetMouseButton(0)) {
-                Vector3 vec = Input.mousePosition;
-                vec.z = 10f;
-                vec = Camera.main.ScreenToWorldPoint(vec);
-                transform.position = vec;
-            }
+        else if (Input.GetMouseButton(0)) {
+            Vector3 vec = Input.mousePosition;
+            vec.z = 10f;
+            vec = Camera.main.ScreenToWorldPoint(vec);
+            transform.position = vec;
         }
+        
         //オブジェクト移動中はSpringJointを無効にする    
         gameObject.GetComponent<SpringJoint2D>().enabled = false;
     }
@@ -94,14 +78,21 @@ public class FruitController : MonoBehaviour {
         //元のOrder In Layerに戻す
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
 
-        //ドラッグが終わったと時に正解の場所でなかったらSpringJointを有効にする
-        if (!isCorrect) {
+        //ドラッグが終わったと時に正解だったら次の問題。正解でなければSpringJointで戻る
+        if (isCorrect) {
+            isTouchable = false;
+            correctNum++;
+            Debug.Log(correctNum);
+            Debug.Log(fruitsParent.transform.childCount);
+        }
+        else {
             gameObject.GetComponent<SpringJoint2D>().enabled = true;
         }
     }
 
     public void PointerDown() {
 
+        //回答中以外は触らせない
         if (!isTouchable) {
             return;
         }
@@ -120,6 +111,20 @@ public class FruitController : MonoBehaviour {
 
         //オブジェクトが離されたら縮小
         transform.localScale = normalScale;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision) {
+
+        //衝突した場所のタグとgameObjectのタグが等しければ、isCorrectをtrue
+        if(collision.tag == gameObject.tag) {
+            isCorrect = true;
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision) {
+
+        //衝突が終わったら、isCorrectをfalse
+        isCorrect = false;
     }
 
 }
