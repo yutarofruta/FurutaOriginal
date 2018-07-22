@@ -13,7 +13,7 @@ public class QuestionManager : MonoBehaviour {
 
     public GameObject goal;     //オブジェクトを持っていく場所
 
-    public QuestionObject[] questions;      //Questionオブジェクトのプレハブ
+    public QuestionObject[] groupingQuestions;      //Questionオブジェクトのプレハブ
     public SpriteRenderer[] selectionImages;   //動かす果物オブジェクトを入れる
 
     public GameObject activeCharacter;     //現在扱っている果物のキャラクター
@@ -21,13 +21,13 @@ public class QuestionManager : MonoBehaviour {
     private void Start() {
 
         //各果物のQuestionオブジェクトのanswerSpriteを取って、動かす果物オブジェクトを表示する
-        for (int i = 0; i < questions.Length; i++){
-            selectionImages[i].sprite = questions[i].answerSprite;
-            selectionImages[i].tag = questions[i].answerTag;
+        for (int i = 0; i < groupingQuestions.Length; i++){
+            selectionImages[i].sprite = groupingQuestions[i].answerSprite;
+            selectionImages[i].tag = groupingQuestions[i].answerTag;
         }
 
         //問題の数を取得
-        maxNum = questions.Length;
+        maxNum = groupingQuestions.Length;
     }
 
     private void Update() {
@@ -37,7 +37,7 @@ public class QuestionManager : MonoBehaviour {
         if(qNum <= maxNum) {
 
             //今の対応する問題のデータを持ったquestionObjectを決める
-            QuestionObject questionObject = questions[qNum - 1];
+            QuestionObject questionObject = groupingQuestions[qNum - 1];
 
             //問題文を呼び出す
             qText.GetComponent<Text>().text = questionObject.questionMessage;

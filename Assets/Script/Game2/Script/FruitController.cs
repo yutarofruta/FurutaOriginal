@@ -1,29 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class SpriteController : MonoBehaviour {
+public class FruitController : MonoBehaviour {
 
-    public GameObject goal;
-    public GameObject character;
-    public GameObject questionManager;
+    private GameObject leftBasket;
+    private GameObject rightBasket;
+    private GameObject answerBasket;
+
+    private GameObject questionManager;
 
     public string answerTag;
     public bool isTouchable = true;
-        
-	// Use this for initialization
-	void Start () {
-    }
-	
-	// Update is called once per frame
-	void Update () {
+    private bool isCorrect = false;
 
-        //現在のキャラクターをQuestionManagerから受け取る
-        if(questionManager.GetComponent<QuestionManager>().activeCharacter != null) {
-            character = questionManager.GetComponent<QuestionManager>().activeCharacter;
-        }
+    private Vector3 normalScale;
+    private Vector3 expandedScale;
+
+    // Use this for initialization
+    void Start () {
+        leftBasket = GameObject.Find("LeftBasket");
+        rightBasket = GameObject.Find("RightBasket");
+        questionManager = GameObject.Find("QuestionManager");
+
+        //拡大・縮小用スケール
+        normalScale = transform.localScale;
+        expandedScale = normalScale * 1.3f;
     }
+
+    // Update is called once per frame
+    void Update () {
+		
+	}
 
     public void OnDrag() {
 
@@ -33,29 +41,30 @@ public class SpriteController : MonoBehaviour {
         }
 
         //ドラッグされている間は拡大
-        transform.localScale = new Vector3(10, 10, 2);
+        transform.localScale = expandedScale;
 
         //最前面に出す
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
 
-        //動かしているオブジェクトとゴールの場所までの距離
-        float distance = Vector3.Distance(transform.position, goal.transform.position);
+        //答えのbasketを決める
+        answerBasket = (leftBasket.tag == gameObject.tag) ? leftBasket : rightBasket;
 
-        //正解オブジェクトのタグをQuestionManagerから取得
-        answerTag = questionManager.GetComponent<QuestionManager>().answerTag.ToString();
+        //distanceを指定
+        float distance = Vector3.Distance(transform.position, answerBasket.transform.position);
 
         //正解のオブジェクトがゴールの十分近くに来たら、静止してCLEARに移る
-        if (distance < 0.7f && gameObject.tag == answerTag) {
-            transform.position = goal.transform.position;
-            character.GetComponent<CharacterManager>().GoNextState();
-            
-            character.GetComponent<CharacterManager>().clearedSprite = this.gameObject;
-            transform.localScale = new Vector3(8, 8, 1);
+        if (distance < 0.7f && gameObject.tag == answerBasket.tag) {
+
+            isCorrect = true;
+
+            transform.localScale = normalScale;
+
+            Debug.Log("いいぞ！");
 
         }
         else {  //オブジェクトがタッチについてくる
 
-            if (Input.touchCount > 0) { 
+            if (Input.touchCount > 0) {
                 Touch touch = Input.GetTouch(0);
                 Vector3 vec = touch.position;
                 vec.z = 10f;
@@ -73,23 +82,27 @@ public class SpriteController : MonoBehaviour {
         gameObject.GetComponent<SpringJoint2D>().enabled = false;
     }
 
+
+
+    //EventSystem
+
     public void EndDrag() {
 
         //ドラッグが終わったら縮小
-        transform.localScale = new Vector3(8, 8, 1);
+        transform.localScale = normalScale;
 
         //元のOrder In Layerに戻す
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
 
-        //ドラッグが終わったらSpringJointを有効にする
-        if (transform.position != goal.transform.position) {
+        //ドラッグが終わったと時に正解の場所でなかったらSpringJointを有効にする
+        if (!isCorrect) {
             gameObject.GetComponent<SpringJoint2D>().enabled = true;
         }
     }
 
     public void PointerDown() {
 
-        if(!isTouchable) {
+        if (!isTouchable) {
             return;
         }
 
@@ -97,7 +110,7 @@ public class SpriteController : MonoBehaviour {
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
 
         //オブジェクトが触られている間は拡大
-        transform.localScale = new Vector3(10, 10, 2);
+        transform.localScale = expandedScale;
     }
 
     public void PointerUp() {
@@ -106,7 +119,8 @@ public class SpriteController : MonoBehaviour {
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
 
         //オブジェクトが離されたら縮小
-        transform.localScale = new Vector3(8, 8, 1);
+        transform.localScale = normalScale;
     }
 
 }
+
