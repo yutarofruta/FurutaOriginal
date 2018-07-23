@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FruitManager : MonoBehaviour {
 
-    private FruitController[] fruits;     
+    private ChoiceController[] fruits;     
     public GameObject questionManager;
 
     // Use this for initialization
@@ -20,7 +20,7 @@ public class FruitManager : MonoBehaviour {
     public void ChangeSpritesIsTouchable(bool b) {
 
         //動かすオブジェクトをすべて読み込み
-        fruits = GetComponentsInChildren<FruitController>();
+        fruits = GetComponentsInChildren<ChoiceController>();
 
         //読み込んだ全ての動かすオブジェクトに対し、Touchableを変更
         for (int i = 0; i < fruits.Length; i++) {

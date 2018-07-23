@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestionObject : MonoBehaviour {
+public class SelectingQuestionObject : MonoBehaviour {
 
     public string questionMessage;
     public Sprite answerSprite;
-    public Sprite goalSprite;
+    public Sprite goalSprite;       //ゴール用の果物
     public string answerTag;
     public GameObject Character;
 

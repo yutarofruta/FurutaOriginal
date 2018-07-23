@@ -124,12 +124,13 @@ GameObject:
   - component: {fileID: 178992027}
   - component: {fileID: 178992033}
   - component: {fileID: 178992032}
-  - component: {fileID: 178992031}
   - component: {fileID: 178992030}
   - component: {fileID: 178992029}
   - component: {fileID: 178992028}
-  m_Layer: 8
-  m_Name: Sprite1
+  - component: {fileID: 178992034}
+  - component: {fileID: 178992031}
+  m_Layer: 9
+  m_Name: Choice1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,32 +150,21 @@ Transform:
   m_Father: {fileID: 1872308873}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &178992028
-BoxCollider2D:
+--- !u!58 &178992028
+CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 61555989058725114, guid: 82bbe7abc0659a64da4834023c3b9390,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 178992026}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0047525465, y: 0.0011785924}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.28, y: 0.282}
-    newSize: {x: 0.28, y: 0.282}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.21037441, y: 0.2334066}
-  m_EdgeRadius: 0
+  m_Radius: 0.1
 --- !u!231 &178992029
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -224,14 +214,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 178992026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ba1adc4d3587344bd0265c7783b22e, type: 3}
+  m_Script: {fileID: 11500000, guid: 130c5d87b977ff14eb02b068fdc61d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 1161720993}
-  character: {fileID: 0}
-  questionManager: {fileID: 1370656552}
-  answerTag: 
-  isTouchable: 1
 --- !u!114 &178992032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,12 +230,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
+  - eventID: 5
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 178992034}
+          m_MethodName: OnDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 14
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 178992031}
+        - m_Target: {fileID: 178992034}
           m_MethodName: EndDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 178992031}
+          m_MethodName: CheckIfCorrect
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -266,25 +279,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 178992031}
+        - m_Target: {fileID: 178992034}
           m_MethodName: PointerDown
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 5
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 178992031}
-          m_MethodName: OnDrag
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -300,7 +296,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 178992031}
+        - m_Target: {fileID: 178992034}
           m_MethodName: PointerUp
           m_Mode: 1
           m_Arguments:
@@ -359,6 +355,19 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
+--- !u!114 &178992034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 178992026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b4f5097d3847946a15b21f70390eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchable: 1
+  isCorrect: 0
 --- !u!1 &201865024
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,6 +602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1161720995}
   - component: {fileID: 1161720994}
+  - component: {fileID: 1161720996}
   m_Layer: 0
   m_Name: Goal
   m_TagString: Untagged
@@ -657,6 +667,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1161720996
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1161720993}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.01
 --- !u!1 &1370656552
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,12 +711,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qText: {fileID: 201865026}
   finText: {fileID: 1538082583}
-  maxNum: 0
-  answerTag: 
   goal: {fileID: 1161720993}
-  questions:
+  selectingQuestions:
+  - {fileID: 114012516250162996, guid: 5a7089eb698014af1b358f9aa37f8164, type: 2}
   - {fileID: 114081996216889880, guid: ee228cdf8451a4468951247e44a80330, type: 2}
-  - {fileID: 114081996216889880, guid: 5a7089eb698014af1b358f9aa37f8164, type: 2}
   - {fileID: 114962627835762832, guid: 1a891d6575fe725458822d5ffbd53623, type: 2}
   selectionImages:
   - {fileID: 178992033}
@@ -796,12 +819,13 @@ GameObject:
   - component: {fileID: 1604396254}
   - component: {fileID: 1604396260}
   - component: {fileID: 1604396259}
-  - component: {fileID: 1604396258}
   - component: {fileID: 1604396257}
   - component: {fileID: 1604396256}
+  - component: {fileID: 1604396261}
   - component: {fileID: 1604396255}
-  m_Layer: 8
-  m_Name: Sprite2
+  - component: {fileID: 1604396258}
+  m_Layer: 9
+  m_Name: Choice2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -821,32 +845,19 @@ Transform:
   m_Father: {fileID: 1872308873}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1604396255
-BoxCollider2D:
+--- !u!114 &1604396255
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 61430242776143660, guid: 42861513cfb921e4fa2e5dea43614b8a,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1604396253}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0015905052, y: 0.0016405731}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.236, y: 0.278}
-    newSize: {x: 0.26, y: 0.272}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.22524163, y: 0.23954833}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b4f5097d3847946a15b21f70390eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchable: 1
+  isCorrect: 0
 --- !u!231 &1604396256
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -891,20 +902,14 @@ Rigidbody2D:
 --- !u!114 &1604396258
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114072363472638798, guid: 42861513cfb921e4fa2e5dea43614b8a,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1604396253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ba1adc4d3587344bd0265c7783b22e, type: 3}
+  m_Script: {fileID: 11500000, guid: 130c5d87b977ff14eb02b068fdc61d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 1161720993}
-  character: {fileID: 0}
-  questionManager: {fileID: 1370656552}
-  answerTag: 
-  isTouchable: 1
 --- !u!114 &1604396259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -922,7 +927,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1604396258}
+        - m_Target: {fileID: 1604396255}
           m_MethodName: OnDrag
           m_Mode: 1
           m_Arguments:
@@ -940,7 +945,18 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1604396258}
-          m_MethodName: EndDrag
+          m_MethodName: CheckIfCorrect
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1604396258}
+          m_MethodName: CheckIfCorrect
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -956,7 +972,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1604396258}
+        - m_Target: {fileID: 1604396255}
           m_MethodName: PointerDown
           m_Mode: 1
           m_Arguments:
@@ -973,7 +989,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1604396258}
+        - m_Target: {fileID: 1604396255}
           m_MethodName: PointerUp
           m_Mode: 1
           m_Arguments:
@@ -1032,6 +1048,21 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
+--- !u!58 &1604396261
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1604396253}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!1 &1617374022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,12 +1136,13 @@ GameObject:
   - component: {fileID: 1653700918}
   - component: {fileID: 1653700924}
   - component: {fileID: 1653700923}
-  - component: {fileID: 1653700922}
   - component: {fileID: 1653700921}
   - component: {fileID: 1653700920}
+  - component: {fileID: 1653700925}
   - component: {fileID: 1653700919}
-  m_Layer: 8
-  m_Name: Sprite3
+  - component: {fileID: 1653700922}
+  m_Layer: 9
+  m_Name: Choice3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1130,32 +1162,19 @@ Transform:
   m_Father: {fileID: 1872308873}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1653700919
-BoxCollider2D:
+--- !u!114 &1653700919
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 61668601953815776, guid: 22c2ca3bd3302f24f94c62d90e694ae0,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1653700917}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0025144964, y: -0.0018029213}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.26, y: 0.272}
-    newSize: {x: 0.236, y: 0.278}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.19826898, y: 0.25292826}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b4f5097d3847946a15b21f70390eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchable: 1
+  isCorrect: 0
 --- !u!231 &1653700920
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -1200,20 +1219,14 @@ Rigidbody2D:
 --- !u!114 &1653700922
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114309623916873176, guid: 22c2ca3bd3302f24f94c62d90e694ae0,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1653700917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ba1adc4d3587344bd0265c7783b22e, type: 3}
+  m_Script: {fileID: 11500000, guid: 130c5d87b977ff14eb02b068fdc61d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 1161720993}
-  character: {fileID: 0}
-  questionManager: {fileID: 1370656552}
-  answerTag: 
-  isTouchable: 1
 --- !u!114 &1653700923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1231,7 +1244,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1653700922}
+        - m_Target: {fileID: 1653700919}
           m_MethodName: OnDrag
           m_Mode: 1
           m_Arguments:
@@ -1248,8 +1261,19 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1653700922}
+        - m_Target: {fileID: 1653700919}
           m_MethodName: EndDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1653700922}
+          m_MethodName: CheckIfCorrect
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1265,7 +1289,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1653700922}
+        - m_Target: {fileID: 1653700919}
           m_MethodName: PointerDown
           m_Mode: 1
           m_Arguments:
@@ -1282,7 +1306,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1653700922}
+        - m_Target: {fileID: 1653700919}
           m_MethodName: PointerUp
           m_Mode: 1
           m_Arguments:
@@ -1341,6 +1365,21 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
+--- !u!58 &1653700925
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1653700917}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!1 &1829107129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,7 +1485,7 @@ GameObject:
   - component: {fileID: 1872308873}
   - component: {fileID: 1872308874}
   m_Layer: 0
-  m_Name: SpriteManager
+  m_Name: ChoiceManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

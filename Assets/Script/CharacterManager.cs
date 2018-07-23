@@ -8,7 +8,7 @@ public class CharacterManager : MonoBehaviour {
     AnimatorStateInfo animInfo;
     Rigidbody2D rigid2D;
 
-    public GameObject spriteManager;
+    public GameObject choiceManager;
     public GameObject questionManager;
 
     //削除されるスプライト
@@ -35,7 +35,7 @@ public class CharacterManager : MonoBehaviour {
         rigid2D = GetComponent<Rigidbody2D>();
 
         //spriteManagerとquestionManagerを取得
-        spriteManager = GameObject.Find("SpriteManager");
+        choiceManager = GameObject.Find("ChoiceManager");
         questionManager = GameObject.Find("QuestionManager");
 
 
@@ -45,13 +45,13 @@ public class CharacterManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        Debug.Log(playerState);
+        //Debug.Log(playerState);
 
         switch (playerState) {
             case PlayerState.WAIT:
 
                 //スプライトのタッチを禁止
-                spriteManager.GetComponent<SpriteManager>().ChangeSpritesIsTouchable(false);
+                choiceManager.GetComponent<ChoiceManager>().ChangeSpritesIsTouchable(false);
 
                 //定位置に移動・定位置まで移動したらPLAYに移る
                 if (gameObject.transform.position.x > stopPos) {
@@ -66,13 +66,13 @@ public class CharacterManager : MonoBehaviour {
             case PlayerState.PLAY:
 
                 //スプライトのタッチを許可
-                spriteManager.GetComponent<SpriteManager>().ChangeSpritesIsTouchable(true);
+                choiceManager.GetComponent<ChoiceManager>().ChangeSpritesIsTouchable(true);
                 break;
 
             case PlayerState.JUMP:
 
                 //スプライトのタッチを禁止
-                spriteManager.GetComponent<SpriteManager>().ChangeSpritesIsTouchable(false);
+                choiceManager.GetComponent<ChoiceManager>().ChangeSpritesIsTouchable(false);
 
                 bool isGround = (rigid2D.velocity.y == 0) ? true : false;
 
@@ -139,7 +139,7 @@ public class CharacterManager : MonoBehaviour {
             anim.SetTrigger("EnterTrigger");
 
             //次の問題に移る
-            questionManager.GetComponent<QuestionManager>().GoNextQuestion();
+            questionManager.GetComponent<SelectingQuestionManager>().GoNextQuestion();
             return;
         }
     }

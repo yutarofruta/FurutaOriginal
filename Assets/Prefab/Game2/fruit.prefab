@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61098035719221806}
   - component: {fileID: 114475105176176046}
   - component: {fileID: 114108803340921908}
+  - component: {fileID: 114304260214214634}
   - component: {fileID: 50359728521195624}
   - component: {fileID: 231806608084442968}
   m_Layer: 9
@@ -101,8 +102,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b4f5097d3847946a15b21f70390eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  answerTag: 
   isTouchable: 1
+  isCorrect: 0
+--- !u!114 &114304260214214634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1250654956398236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9fd3a87dc5bd94d80d6bdfccaad2c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114475105176176046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,6 +150,17 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 114108803340921908}
           m_MethodName: EndDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 114304260214214634}
+          m_MethodName: CountingCorrect
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

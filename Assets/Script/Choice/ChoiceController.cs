@@ -2,25 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FruitController : MonoBehaviour {
+public class ChoiceController : MonoBehaviour {
 
-    private GameObject fruitsParent;
-
-    private GameObject questionManager;
-
-    public string answerTag;
     public bool isTouchable = true;
-    private bool isCorrect = false;
+    public bool isCorrect = false;
 
     private Vector3 normalScale;
     private Vector3 expandedScale;
 
-    private int correctNum = 0;
-
     // Use this for initialization
     void Start () {
-        questionManager = GameObject.Find("QuestionManager");
-        fruitsParent = GameObject.Find("FruitsParent");
 
         //拡大・縮小用スケール
         normalScale = transform.localScale;
@@ -29,10 +20,10 @@ public class FruitController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if(correctNum == fruitsParent.transform.childCount) {
-            questionManager.GetComponent<QuestionManager>().GoNextQuestion();
-        }
 	}
+
+
+    //EventSystem
 
     public void OnDrag() {
 
@@ -66,11 +57,12 @@ public class FruitController : MonoBehaviour {
         gameObject.GetComponent<SpringJoint2D>().enabled = false;
     }
 
-
-
-    //EventSystem
-
     public void EndDrag() {
+
+        //正解後は触らせない
+        if (!isTouchable) {
+            return;
+        }
 
         //ドラッグが終わったら縮小
         transform.localScale = normalScale;
@@ -78,16 +70,9 @@ public class FruitController : MonoBehaviour {
         //元のOrder In Layerに戻す
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
 
-        //ドラッグが終わったと時に正解だったら次の問題。正解でなければSpringJointで戻る
-        if (isCorrect) {
-            isTouchable = false;
-            correctNum++;
-            Debug.Log(correctNum);
-            Debug.Log(fruitsParent.transform.childCount);
-        }
-        else {
-            gameObject.GetComponent<SpringJoint2D>().enabled = true;
-        }
+        /*
+        問題ごとの特有な正誤判断を行うクラスを追加して、EventTriggerに登録してください！
+        */
     }
 
     public void PointerDown() {
@@ -125,6 +110,8 @@ public class FruitController : MonoBehaviour {
 
         //衝突が終わったら、isCorrectをfalse
         isCorrect = false;
+
+        Debug.Log("Exit");
     }
 
 }

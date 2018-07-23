@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteManager : MonoBehaviour {
+public class ChoiceManager : MonoBehaviour {
 
-    private SpriteController[] sprites;
+    private ChoiceController[] sprites;
     public GameObject questionManager;
 
     // Use this for initialization
@@ -20,7 +20,7 @@ public class SpriteManager : MonoBehaviour {
     public void ChangeSpritesIsTouchable(bool b) {
 
         //動かすオブジェクトをすべて読み込み
-        sprites = GetComponentsInChildren<SpriteController>();
+        sprites = GetComponentsInChildren<ChoiceController>();
 
         //読み込んだ全ての動かすオブジェクトに対し、Touchableを変更
         for (int i = 0; i < sprites.Length; i++) {

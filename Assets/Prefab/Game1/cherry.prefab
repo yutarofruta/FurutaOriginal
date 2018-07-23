@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4e2cdb5d4f1624b9f13604ac7d076b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteManager: {fileID: 0}
+  choiceManager: {fileID: 0}
   questionManager: {fileID: 0}
   clearedSprite: {fileID: 0}
   playerState: 0

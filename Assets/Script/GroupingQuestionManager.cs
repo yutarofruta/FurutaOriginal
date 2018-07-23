@@ -5,7 +5,8 @@ using UnityEngine;
 public class GroupingQuestionManager : MonoBehaviour {
 
     private int qNum = 1;    　//問題番号
-    private int maxNum;
+    private int maxNum;     //問題数(QuestionObjectの数)
+    public int correctNum = 0;      //正解の数
 
     public GroupingQuestionObject[] groupingQuestions;      //GroupingQuestionオブジェクトのプレハブ
 
@@ -37,6 +38,17 @@ public class GroupingQuestionManager : MonoBehaviour {
     
     public void GoNextQuestion() {
 
+        //一問目でなければ、前の果物を消去し、correctNumも初期化する
+        if(qNum != 1) {
+            for(int i = 0; i < leftFruits.Length; i++) {
+                Destroy(leftFruits[i]);
+            }
+            for (int i = 0; i < rightFruits.Length; i++) {
+                Destroy(rightFruits[i]);
+            }
+            correctNum = 0;
+        }
+        
         if (qNum <= maxNum) {
 
             //今の対応する問題のデータを持ったquestionObjectを決める
@@ -53,7 +65,6 @@ public class GroupingQuestionManager : MonoBehaviour {
             //左の果物を生成する
             for (int i = 0; i < questionObject.leftFruitNum; i++) {
                 leftFruits[i] = Instantiate(fruit, questionObject.leftFruitPos[i], Quaternion.identity);
-                leftFruits[i].transform.parent = fruitsParent.transform;
                 leftFruits[i].tag = questionObject.leftFruitTag;
                 leftFruits[i].GetComponent<SpriteRenderer>().sprite = questionObject.leftFruit;
                 leftFruits[i].GetComponent<SpringJoint2D>().connectedAnchor = questionObject.leftFruitPos[i];
@@ -62,7 +73,6 @@ public class GroupingQuestionManager : MonoBehaviour {
             //右の果物を生成する
             for (int i = 0; i < questionObject.rightFruitNum; i++) {
                 rightFruits[i] = Instantiate(fruit, questionObject.rightFruitPos[i], Quaternion.identity);
-                rightFruits[i].transform.parent = fruitsParent.transform;
                 rightFruits[i].tag = questionObject.rightFruitTag;
                 rightFruits[i].GetComponent<SpriteRenderer>().sprite = questionObject.rightFruit;
                 rightFruits[i].GetComponent<SpringJoint2D>().connectedAnchor = questionObject.rightFruitPos[i];
@@ -75,6 +85,16 @@ public class GroupingQuestionManager : MonoBehaviour {
 
         //問題番号を1増やす
         qNum++;
+    }
 
+    public void AddCorrectNum() {
+
+        //正解数を加算
+        correctNum++;
+
+        //正解数が果物の数と同じになったら次の問題へ
+        if(correctNum == leftFruits.Length + rightFruits.Length) {
+            GoNextQuestion();
+        }
     }
 }
