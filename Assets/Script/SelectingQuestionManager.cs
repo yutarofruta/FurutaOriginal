@@ -42,7 +42,6 @@ public class SelectingQuestionManager : MonoBehaviour {
         Debug.Log("maxNum" + maxNum);
 
         //次の問題に移るタイミングで、今のactiveCharacterを消去する
-        
         if (activeCharacter != null) {
             Destroy(activeCharacter);
             Debug.Log("destroy");
@@ -63,10 +62,8 @@ public class SelectingQuestionManager : MonoBehaviour {
             //goalのタグを答えのタグと同じにする
             goal.tag = questionObject.answerTag;
 
-            //現在activeなキャラクターがいない(次の問題に移った時)場合に、Characterを生成する
-            if (activeCharacter == null) {
-                activeCharacter = Instantiate(questionObject.Character) as GameObject;
-            }
+            //Characterを生成する
+            activeCharacter = Instantiate(questionObject.Character) as GameObject;
         }
 
         //全部の問題が終わったら

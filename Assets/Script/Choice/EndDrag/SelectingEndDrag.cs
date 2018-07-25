@@ -15,11 +15,12 @@ public class SelectingEndDrag: MonoBehaviour {
     private void Start() {
         goal = GameObject.Find("Goal");
         questionManager = GameObject.Find("QuestionManager");
-
-        isTouchable = gameObject.GetComponent<ChoiceController>().isTouchable;
     }
 
     public void CheckIfCorrect() {
+
+        //触れるかどうか判断
+        isTouchable = gameObject.GetComponent<ChoiceController>().isTouchable;
 
         //触れないならここでリターン
         if (!isTouchable) {

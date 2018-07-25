@@ -4,14 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - answer
-  - one
-  - two
-  - three
   - grape
   - melon
   - cherry
-  - banana
+  - orange
+  - pine
   layers:
   - Default
   - TransparentFX
@@ -21,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - sprite
+  - 
   - fruit
   - character
   - 

@@ -45,7 +45,7 @@ public class CharacterManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        //Debug.Log(playerState);
+        Debug.Log(playerState);
 
         switch (playerState) {
             case PlayerState.WAIT:

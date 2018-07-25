@@ -5,8 +5,8 @@ AnimatorOverrideController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MelonOverride
+  m_Name: OrangeOverride
   m_Controller: {fileID: 9100000, guid: 8f2a387d145c03942a3c83aec5a4616e, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 56722689cf878ed4ca0f0264050f069c, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 139fa5d3594868143bc26148f04bf248, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ab7f20f7408b25a4f85c5907e24a0f5e, type: 2}
