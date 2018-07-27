@@ -6,31 +6,26 @@ public class CharacterManager : MonoBehaviour {
 
     Animator anim;
     AnimatorStateInfo animInfo;
-    Rigidbody2D rigid2D;
+    protected Rigidbody2D rigid2D;
 
     public GameObject choiceManager;
     public GameObject questionManager;
 
-    //削除されるスプライト
-    public GameObject clearedSprite;
-
-    //キャラクターの入場・退場
-    private float stopPos = 6f;
-
     //ジャンプ用のカウント
-    private int jumpNum = 0;
+    protected int jumpNum = 0;
 
     public enum PlayerState {
         WAIT,   //問題準備アニメーション中
         PLAY,   //回答中
-        JUMP,   //正解アニメーション中
+        CLEAR,   //正解アニメーション中
         LEAVE   //退場アニメーション中
     }
 
     public PlayerState playerState;
 
     // Use this for initialization
-    void Start () {
+    protected virtual void Start () {
+
         anim = GetComponent<Animator>();
         rigid2D = GetComponent<Rigidbody2D>();
 
@@ -38,109 +33,88 @@ public class CharacterManager : MonoBehaviour {
         choiceManager = GameObject.Find("ChoiceManager");
         questionManager = GameObject.Find("QuestionManager");
 
-
         //WAITから開始
         playerState = PlayerState.WAIT;
     }
 
+    public virtual void WaitState() {
+
+    }
+    public virtual void PlayState() {
+
+    }
+    public virtual void ClearState() {
+
+    }
+    public virtual void LeaveState() {
+
+    }
+
     // Update is called once per frame
     void Update () {
-        Debug.Log(playerState);
+        //Debug.Log(playerState);
 
         switch (playerState) {
             case PlayerState.WAIT:
 
-                //スプライトのタッチを禁止
-                choiceManager.GetComponent<ChoiceManager>().ChangeSpritesIsTouchable(false);
-
-                //定位置に移動・定位置まで移動したらPLAYに移る
-                if (gameObject.transform.position.x > stopPos) {
-                    transform.Translate(-0.1f, 0, 0);
-                }
-                else {
-                    GoNextState();
-                }
-
+                WaitState();
                 break;
 
             case PlayerState.PLAY:
 
-                //スプライトのタッチを許可
-                choiceManager.GetComponent<ChoiceManager>().ChangeSpritesIsTouchable(true);
+                PlayState();                
                 break;
 
-            case PlayerState.JUMP:
+            case PlayerState.CLEAR:
 
-                //スプライトのタッチを禁止
-                choiceManager.GetComponent<ChoiceManager>().ChangeSpritesIsTouchable(false);
-
-                bool isGround = (rigid2D.velocity.y == 0) ? true : false;
-
-                //三回ジャンプさせる
-                if (isGround) {
-                    if(jumpNum < 3) {
-                        rigid2D.AddForce(transform.up * 100f);
-                        jumpNum++;
-                        Debug.Log(jumpNum);
-                    } else {
-                        //スプライトを反転
-                        transform.Rotate(0, 180, 0);
-                        jumpNum = 0;
-                        GoNextState();
-                    }
-                }
-
+                ClearState();
                 break;
 
             case PlayerState.LEAVE:
 
-                //定位置に移動・定位置まで移動したらPLAYに移る
-                if (gameObject.transform.position.x < 10) {
-                    transform.Translate(-0.1f, 0, 0);
-                }
-                else {
-                    GoNextState();
-                }
-
-
+                LeaveState();
                 break;
         }
     }
 
     public void GoNextState() {
         if (playerState == PlayerState.WAIT) {
-            anim.SetTrigger("IdleTrigger");
             playerState = PlayerState.PLAY;
+
+            //アイドルのアニメーションを実行
+            anim.SetTrigger("IdleTrigger");
+            
             return;
         }
         else if (playerState == PlayerState.PLAY) {
-            playerState = PlayerState.JUMP;
+            playerState = PlayerState.CLEAR;
 
             //ジャンプのアニメーションを実行
             anim.SetTrigger("JumpTrigger");
 
-            Debug.Log("JumpTrigger");
             return;
         }
-        else if (playerState == PlayerState.JUMP) {
+        else if (playerState == PlayerState.CLEAR) {
             playerState = PlayerState.LEAVE;
 
             //退場のアニメーションを実行
             anim.SetTrigger("LeaveTrigger");
 
-            Debug.Log("LeaveTrigger");
             return;
         }
         else if (playerState == PlayerState.LEAVE) {
             playerState = PlayerState.WAIT;
-            Destroy(clearedSprite);
 
             //入場のアニメーションを実行
             anim.SetTrigger("EnterTrigger");
 
             //次の問題に移る
-            questionManager.GetComponent<SelectingQuestionManager>().GoNextQuestion();
+            GoNextQuestion();
             return;
         }
     }
+
+    public virtual void GoNextQuestion() {
+
+    } 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChoiceManager : MonoBehaviour {
 
-    private ChoiceController[] sprites;
+    private ChoiceController[] choices;
     public GameObject questionManager;
 
     // Use this for initialization
@@ -20,11 +20,11 @@ public class ChoiceManager : MonoBehaviour {
     public void ChangeSpritesIsTouchable(bool b) {
 
         //動かすオブジェクトをすべて読み込み
-        sprites = GetComponentsInChildren<ChoiceController>();
+        choices = GetComponentsInChildren<ChoiceController>();
 
         //読み込んだ全ての動かすオブジェクトに対し、Touchableを変更
-        for (int i = 0; i < sprites.Length; i++) {
-            sprites[i].isTouchable = b;
+        for (int i = 0; i < choices.Length; i++) {
+            choices[i].isTouchable = b;
         }
     }
 }

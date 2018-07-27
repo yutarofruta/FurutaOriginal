@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4985290155976550}
   - component: {fileID: 212127357879725256}
   - component: {fileID: 95911941568873932}
-  - component: {fileID: 114279703665802778}
   - component: {fileID: 50410561244466698}
   - component: {fileID: 61165991097930476}
+  - component: {fileID: 114486930072421420}
   m_Layer: 0
   m_Name: orange
   m_TagString: cherry
@@ -106,7 +106,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114279703665802778
+--- !u!114 &114486930072421420
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -114,11 +114,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1190035125303740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de4e2cdb5d4f1624b9f13604ac7d076b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ac34fd6bd2ff8041aea3352999f82ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choiceManager: {fileID: 0}
   questionManager: {fileID: 0}
+  target: {fileID: 0}
   clearedSprite: {fileID: 0}
   playerState: 0
 --- !u!212 &212127357879725256

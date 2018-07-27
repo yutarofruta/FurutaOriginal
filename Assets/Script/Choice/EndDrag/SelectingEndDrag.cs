@@ -40,7 +40,7 @@ public class SelectingEndDrag: MonoBehaviour {
             activeCharacter.GetComponent<CharacterManager>().GoNextState();
 
             //今の果物choiceを削除するものに指定する
-            activeCharacter.GetComponent<CharacterManager>().clearedSprite = this.gameObject;
+            activeCharacter.GetComponent<Game1Character>().clearedSprite = this.gameObject;
         }
         else {
             gameObject.GetComponent<SpringJoint2D>().enabled = true;

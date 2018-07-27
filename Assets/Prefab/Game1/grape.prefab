@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4831625080663768}
   - component: {fileID: 212076611179762362}
   - component: {fileID: 95306900127563090}
-  - component: {fileID: 114133674312355560}
   - component: {fileID: 50656949323851244}
   - component: {fileID: 61486207294602052}
+  - component: {fileID: 114179475506174194}
   m_Layer: 10
   m_Name: grape
   m_TagString: grape
@@ -80,7 +80,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.5764706, y: 4.8588233}
+    oldSize: {x: 3.2, y: 4.3473682}
     newSize: {x: 4.0533333, y: 5.5066667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -106,7 +106,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114133674312355560
+--- !u!114 &114179475506174194
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -114,11 +114,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1183822933955618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de4e2cdb5d4f1624b9f13604ac7d076b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ac34fd6bd2ff8041aea3352999f82ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choiceManager: {fileID: 0}
   questionManager: {fileID: 0}
+  target: {fileID: 0}
   clearedSprite: {fileID: 0}
   playerState: 0
 --- !u!212 &212076611179762362

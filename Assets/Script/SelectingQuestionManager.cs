@@ -13,16 +13,22 @@ public class SelectingQuestionManager : MonoBehaviour {
     public GameObject goal;     //オブジェクトを持っていく場所
 
     public SelectingQuestionObject[] selectingQuestions;      //Questionオブジェクトのプレハブ
-    public SpriteRenderer[] selectionImages;   //動かす果物オブジェクトを入れる
+    public SpriteRenderer[] choiceImages;   //Chiceにあたるオブジェクトを入れる
 
     public GameObject activeCharacter;     //現在扱っている果物のキャラクター
 
     private void Start() {
 
-        //各果物のQuestionオブジェクトのanswerSpriteを取って、動かす果物オブジェクトを表示する
+        //selectingQuestionsをシャッフル
+        QuestionShuffle();
+
+        //Choiceの場所をシャッフル
+        ChoiceImageShuffle();
+
+        //各果物のQuestionオブジェクトのanswerSpriteを取って、動かす果物Choiceオブジェクトを表示する
         for (int i = 0; i < selectingQuestions.Length; i++){
-            selectionImages[i].sprite = selectingQuestions[i].answerSprite;
-            selectionImages[i].tag = selectingQuestions[i].answerTag;
+            choiceImages[i].sprite = selectingQuestions[i].answerSprite;
+            choiceImages[i].tag = selectingQuestions[i].answerTag;
         }
 
         //問題の数を取得
@@ -38,13 +44,9 @@ public class SelectingQuestionManager : MonoBehaviour {
 
     public void GoNextQuestion(){
 
-        Debug.Log("qNum" + qNum);
-        Debug.Log("maxNum" + maxNum);
-
         //次の問題に移るタイミングで、今のactiveCharacterを消去する
         if (activeCharacter != null) {
             Destroy(activeCharacter);
-            Debug.Log("destroy");
         }
         
 
@@ -86,6 +88,39 @@ public class SelectingQuestionManager : MonoBehaviour {
 
 
     }
+
+    // selectingQuestionsをシャッフルする
+    public void QuestionShuffle() {
+        for (int index1 = 0; index1 < selectingQuestions.Length; index1++) {
+            int index2 = Random.Range(0, selectingQuestions.Length - 1);
+            QuestionSwap(ref selectingQuestions[index1], ref selectingQuestions[index2]);
+        }
+    }
+
+    // question1 と questioon2 を入れ替える
+    private void QuestionSwap(ref SelectingQuestionObject question1, ref SelectingQuestionObject question2) {
+        SelectingQuestionObject question = question1;
+        question1 = question2;
+        question2 = question;
+    }
+
+    // choiceImagesをシャッフルする
+    public void ChoiceImageShuffle() {
+        for (int index1 = 0; index1 < choiceImages.Length; index1++) {
+            int index2 = Random.Range(0, choiceImages.Length - 1);
+            ChoiceImageSwap(ref choiceImages[index1], ref choiceImages[index2]);
+        }
+    }
+
+    // choice1 と choice2 を入れ替える
+    private void ChoiceImageSwap(ref SpriteRenderer choice1, ref SpriteRenderer choice2) {
+        SpriteRenderer choice = choice1;
+        choice1 = choice2;
+        choice2 = choice;
+    }
+
+
+
 
 
 }

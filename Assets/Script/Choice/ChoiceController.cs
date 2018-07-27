@@ -71,8 +71,10 @@ public class ChoiceController : MonoBehaviour {
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
 
         /*
+         * 
         問題ごとの特有な正誤判断を行うクラスを追加して、EventTriggerに登録してください！
-        */
+         *
+         */
     }
 
     public void PointerDown() {
@@ -110,8 +112,6 @@ public class ChoiceController : MonoBehaviour {
 
         //衝突が終わったら、isCorrectをfalse
         isCorrect = false;
-
-        Debug.Log("Exit");
     }
 
 }

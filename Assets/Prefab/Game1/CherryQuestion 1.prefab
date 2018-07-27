@@ -55,4 +55,4 @@ MonoBehaviour:
   answerSprite: {fileID: 21300000, guid: 97769e9a4d420415eb2d620e742d19e3, type: 3}
   goalSprite: {fileID: 21300000, guid: 99eb39d0ed8433648a80b3f7ce580adc, type: 3}
   answerTag: cherry
-  Character: {fileID: 1936957099252816, guid: ab627114ea71b4754974f09ae56a710d, type: 2}
+  Character: {fileID: 1087779848371844, guid: d4f884158d0d6604c891b33d8462a87b, type: 2}

@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GroupingQuestionManager : MonoBehaviour {
 
     private int qNum = 1;    　//問題番号
     private int maxNum;     //問題数(QuestionObjectの数)
-    public int correctNum = 0;      //正解の数
+    private int correctNum = 0;      //正解の数
 
     public GroupingQuestionObject[] groupingQuestions;      //GroupingQuestionオブジェクトのプレハブ
 
@@ -26,6 +27,8 @@ public class GroupingQuestionManager : MonoBehaviour {
     private string leftFruitTag;    //左の果物のタグ
     private string rightFruitTag;    //左の果物のタグ
 
+    public Text text;       //Awesomeのテキスト
+
 
     private void Start() {
 
@@ -38,8 +41,10 @@ public class GroupingQuestionManager : MonoBehaviour {
     
     public void GoNextQuestion() {
 
+        Debug.Log("GoNExtQuestion");
+
         //一問目でなければ、前の果物を消去し、correctNumも初期化する
-        if(qNum != 1) {
+        if (qNum != 1) {
             for(int i = 0; i < leftFruits.Length; i++) {
                 Destroy(leftFruits[i]);
             }
@@ -53,6 +58,16 @@ public class GroupingQuestionManager : MonoBehaviour {
 
             //今の対応する問題のデータを持ったquestionObjectを決める
             GroupingQuestionObject questionObject = groupingQuestions[qNum - 1];
+
+            //leftCharacterを生成し、タグをつけて左定位置に置く
+            leftCharacter = Instantiate(questionObject.leftCharacter) as GameObject;
+            leftCharacter.tag = "leftCharacter";
+            leftCharacter.transform.position = new Vector3(-11f, 1, 0);
+
+            //rightCharacterを生成し、タグをつけて右定位置に置く
+            rightCharacter = Instantiate(questionObject.rightCharacter) as GameObject;
+            rightCharacter.tag = "rightCharacter";
+            rightCharacter.transform.position = new Vector3(11f, 1, 0);
 
             //バスケットにタグをつける
             leftBasket.tag = questionObject.leftFruitTag;
@@ -68,6 +83,7 @@ public class GroupingQuestionManager : MonoBehaviour {
                 leftFruits[i].tag = questionObject.leftFruitTag;
                 leftFruits[i].GetComponent<SpriteRenderer>().sprite = questionObject.leftFruit;
                 leftFruits[i].GetComponent<SpringJoint2D>().connectedAnchor = questionObject.leftFruitPos[i];
+                leftFruits[i].transform.parent = fruitsParent.transform;
             }
 
             //右の果物を生成する
@@ -76,11 +92,13 @@ public class GroupingQuestionManager : MonoBehaviour {
                 rightFruits[i].tag = questionObject.rightFruitTag;
                 rightFruits[i].GetComponent<SpriteRenderer>().sprite = questionObject.rightFruit;
                 rightFruits[i].GetComponent<SpringJoint2D>().connectedAnchor = questionObject.rightFruitPos[i];
+                rightFruits[i].transform.parent = fruitsParent.transform;
             }
 
         }
         else {
             //終了
+            text.GetComponent<Text>().text = "AWESOME!";
         }
 
         //問題番号を1増やす
@@ -94,7 +112,8 @@ public class GroupingQuestionManager : MonoBehaviour {
 
         //正解数が果物の数と同じになったら次の問題へ
         if(correctNum == leftFruits.Length + rightFruits.Length) {
-            GoNextQuestion();
+            leftCharacter.GetComponent<CharacterManager>().GoNextState();
+            rightCharacter.GetComponent<CharacterManager>().GoNextState();
         }
     }
 }
