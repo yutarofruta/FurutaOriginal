@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionMessage: Which is Grape?
-  answerSprite: {fileID: 21300000, guid: 42392be795a2ff04197537a8351988ee, type: 3}
-  goalSprite: {fileID: 21300000, guid: 83e0d7587ba882a40a706db783d3089c, type: 3}
+  answerSprite: {fileID: 21300000, guid: 248dd08813c831f488c8f2c67ff8b30b, type: 3}
+  goalSprite: {fileID: 21300000, guid: 6a1f1465b615ed3408142cb918b28a8b, type: 3}
   answerTag: grape
   Character: {fileID: 1183822933955618, guid: ff8b755fc83f1eb4dbb7b0fa8a9e1977, type: 2}

@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftFruit: {fileID: 21300000, guid: 244687e2f3c96fa40816c86cffb24653, type: 3}
-  rightFruit: {fileID: 21300000, guid: 639a4006005135048b433dbb79c10b0d, type: 3}
+  rightFruit: {fileID: 21300000, guid: b031e0626831cdd4ba677adea57b7122, type: 3}
   leftFruitNum: 5
   rightFruitNum: 3
   leftFruitTag: apple

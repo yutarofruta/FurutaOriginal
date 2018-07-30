@@ -13,6 +13,8 @@ TagManager:
   - target
   - leftCharacter
   - rightCharacter
+  - smallest
+  - biggest
   layers:
   - Default
   - TransparentFX

@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionMessage: Which is Melon?
-  answerSprite: {fileID: 21300000, guid: 639a4006005135048b433dbb79c10b0d, type: 3}
-  goalSprite: {fileID: 21300000, guid: e9092979dbadb1e469a26182e4f9d3de, type: 3}
+  answerSprite: {fileID: 21300000, guid: b031e0626831cdd4ba677adea57b7122, type: 3}
+  goalSprite: {fileID: 21300000, guid: a9183827f4344dc4f95cc4f35e4ccf39, type: 3}
   answerTag: melon
   Character: {fileID: 1911637517941998, guid: aa6fbf0b32eca52418950571eab97d6e, type: 2}
