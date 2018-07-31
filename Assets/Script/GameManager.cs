@@ -3,24 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour {
+public class GameManager : MonoBehaviour {
 
     public GameObject popUp;
     private bool isPopUpActive = false;
-    private string game;
+    private string gameName;
+    public static int levelNum;
 
     private void Start() {
         popUp.SetActive(false);
     }
 
-    public void LoadGame(string level) {
+    public void LoadGame(int level) {
 
-        SceneManager.LoadScene(game);
+        levelNum = level;
+        SceneManager.LoadScene(gameName);
     }
 
     public void PopUpSetActice(string game) {
 
-        this.game = game;
+        this.gameName = game;
 
         isPopUpActive = !isPopUpActive;
         popUp.SetActive(isPopUpActive);

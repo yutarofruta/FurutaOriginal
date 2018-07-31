@@ -21,6 +21,8 @@ public class SelectingQuestionManager : MonoBehaviour {
 
     private void Start() {
 
+        selectingQuestions = Resources.LoadAll("Game1_" + GameManager.levelNum.ToString(), typeof(SelectingQuestionObject));
+
         //selectingQuestionsをシャッフル
         QuestionShuffle();
 
