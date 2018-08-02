@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GroupingQuestionManager : MonoBehaviour {
 
     private int qNum = 1;    　//問題番号
     private int maxNum;     //問題数(QuestionObjectの数)
     private int correctNum = 0;      //正解の数
+    private bool isFinished = false;
 
     public GroupingQuestionObject[] groupingQuestions;      //GroupingQuestionオブジェクトのプレハブ
 
@@ -34,13 +36,35 @@ public class GroupingQuestionManager : MonoBehaviour {
 
     private void Start() {
 
+        //シーン名を取得する
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        //Resourcesからlevelに対応する問題を読みだして、objectArrayに入れる
+        object[] objectArray = Resources.LoadAll(sceneName + "_" + GameManager.levelNum.ToString(), typeof(GroupingQuestionObject));
+
+        //selectingQuestionの配列の大きさを、呼び出した問題の配列数と揃える
+        System.Array.Resize(ref groupingQuestions, objectArray.Length);
+
+        //objectArrayの中身をselectingQuestionに入れる
+        for (int i = 0; i < objectArray.Length; i++) {
+            groupingQuestions[i] = (GroupingQuestionObject) objectArray[i];
+        }
+
         //問題の数を取得
         maxNum = groupingQuestions.Length;
 
         //一問目を表示
         GoNextQuestion();
     }
-    
+
+    private void Update() {
+
+        //ゲームメニューに戻る
+        if (isFinished && Input.GetMouseButton(0)) {
+            SceneManager.LoadScene("GameMenu");
+        }
+    }
+
     public void GoNextQuestion() {
 
         //一問目でなければ、前の果物を消去し、correctNumも初期化する
@@ -102,6 +126,9 @@ public class GroupingQuestionManager : MonoBehaviour {
         else {
             //終了
             text.GetComponent<Text>().text = "AWESOME!";
+
+            //ゲーム終了に設定
+            isFinished = true;
         }
 
         //問題番号を1増やす

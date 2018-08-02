@@ -52,10 +52,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruit: {fileID: 21300000, guid: 0afeca1f386c2b34293ccfac866c258b, type: 3}
-  fruitNum: 3
+  fruitNum: 2
   fruitTag: pine
+  answerTag: biggest
   character: {fileID: 1285273241874156, guid: bfc6b23686affb14bb7444524d63486d, type: 2}
   fruitPos:
-  - {x: 0, y: 2.5, z: 0}
-  - {x: 2.5, y: 1.5, z: 0}
-  - {x: 5, y: 2.5, z: 0}
+  - {x: 2.5, y: 2.5, z: 0}
+  - {x: 5, y: 1.5, z: 0}

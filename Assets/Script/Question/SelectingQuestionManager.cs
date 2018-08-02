@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SelectingQuestionManager : MonoBehaviour {
 
@@ -9,11 +10,12 @@ public class SelectingQuestionManager : MonoBehaviour {
     public Text finText;    //ゲーム終了時に出すテキスト
     private int qNum = 1;    　//問題番号
     private int maxNum;     //問題数
+    private bool isFinished = false;        //ゲーム終了
 
     public GameObject target;       //キャラクターの停止位置
     public GameObject goal;     //オブジェクトを持っていく場所
 
-    public SelectingQuestionObject[] selectingQuestions;      //Questionオブジェクトのプレハブ
+    private SelectingQuestionObject[] selectingQuestions;      //Questionオブジェクトのプレハブ
     public SpriteRenderer[] choiceImages;   //Chiceにあたるオブジェクトを入れる
 
     public GameObject activeCharacter;     //現在扱っている果物のキャラクター
@@ -21,10 +23,25 @@ public class SelectingQuestionManager : MonoBehaviour {
 
     private void Start() {
 
-        selectingQuestions = Resources.LoadAll("Game1_" + GameManager.levelNum.ToString(), typeof(SelectingQuestionObject));
+        //シーン名を取得する
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        //Resourcesからlevelに対応する問題を読みだして、objectArrayに入れる
+        object[] objectArray = Resources.LoadAll(sceneName + "_" + GameManager.levelNum.ToString(), typeof(SelectingQuestionObject));
+
+        //selectingQuestionの配列の大きさを、呼び出した問題の配列数と揃える
+        System.Array.Resize(ref selectingQuestions, objectArray.Length);
+
+        //objectArrayの中身をselectingQuestionに入れる
+        for (int i = 0; i < objectArray.Length; i++) {
+            selectingQuestions[i] = (SelectingQuestionObject) objectArray[i];
+        }
 
         //selectingQuestionsをシャッフル
         QuestionShuffle();
+
+        //choiceImagesの配列の大きさをselectingQuestionsの大きさに揃える
+        System.Array.Resize(ref choiceImages, selectingQuestions.Length);
 
         //Choiceの場所をシャッフル
         ChoiceImageShuffle();
@@ -42,8 +59,12 @@ public class SelectingQuestionManager : MonoBehaviour {
         GoNextQuestion();
     }
 
-    private void Update() {     
+    private void Update() {
 
+        //ゲームメニューに戻る
+        if (isFinished && Input.GetMouseButtonDown(0)) {
+            SceneManager.LoadScene("GameMenu");
+        }
     }
 
     public void GoNextQuestion(){
@@ -53,9 +74,8 @@ public class SelectingQuestionManager : MonoBehaviour {
             Destroy(activeCharacter);
             Destroy(clearedChoice);
         }
-        
 
-        if (qNum <= maxNum) {
+        if (qNum <= maxNum) {      //問題出題中
 
             //今の対応する問題のデータを持ったquestionObjectを決める
             SelectingQuestionObject questionObject = selectingQuestions[qNum - 1];
@@ -88,13 +108,11 @@ public class SelectingQuestionManager : MonoBehaviour {
             //問題文を消す
             finText.GetComponent<Text>().text = "AWESOME!";
 
-
+            isFinished = true;
         }
 
         //問題番号を1増やす
         qNum++;
-
-
     }
 
     // selectingQuestionsをシャッフルする

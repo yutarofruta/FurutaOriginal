@@ -6,12 +6,15 @@ public class BiggestEndDrag : MonoBehaviour {
 
     private GameObject questionManager;
     private GameObject activeCharacter;
+    private GameObject basket;
 
     private bool isTouchable;
     private bool isCorrect;
+    private string answerTag;
 
     private void Start() {
         questionManager = GameObject.Find("QuestionManager");
+        basket = questionManager.GetComponent<BiggestQuestionManager>().basket;
     }
 
     public void CheckIfCorrect() {
@@ -29,15 +32,13 @@ public class BiggestEndDrag : MonoBehaviour {
 
         //ドラッグが終わったと時に正解だったら停止。正解でなければSpringJointで戻る
         if (isCorrect) {
+
             gameObject.GetComponent<ChoiceController>().isTouchable = false;
-            //transform.position = goal.transform.position;
+            transform.position = basket.transform.position + new Vector3(0, 1f, 0);
 
             //activeCharacterを取得して、PlayerStateをJumpに変えることでアニメーションさせる
             activeCharacter = questionManager.GetComponent<BiggestQuestionManager>().activeCharacter;
             activeCharacter.GetComponent<GoBackCharacter>().GoNextState();
-
-            //今の果物choiceを削除するものに指定する
-            //activeCharacter.GetComponent<Game1Character>().clearedSprite = this.gameObject;
         }
         else {
             gameObject.GetComponent<SpringJoint2D>().enabled = true;

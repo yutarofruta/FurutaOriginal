@@ -53,8 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftFruit: {fileID: 21300000, guid: 244687e2f3c96fa40816c86cffb24653, type: 3}
   rightFruit: {fileID: 21300000, guid: b031e0626831cdd4ba677adea57b7122, type: 3}
-  leftFruitNum: 5
-  rightFruitNum: 3
+  leftFruitNum: 3
+  rightFruitNum: 2
   leftFruitTag: apple
   rightFruitTag: melon
   leftCharacter: {fileID: 1266505548215542, guid: 94367456301ad8f4496f7877de4bd53b,
@@ -63,11 +63,8 @@ MonoBehaviour:
     type: 2}
   leftFruitPos:
   - {x: -7, y: 3, z: 0}
-  - {x: -3, y: 4, z: 0}
-  - {x: -2, y: 2, z: 0}
-  - {x: 2, y: 1, z: 0}
-  - {x: 3, y: 3, z: 0}
+  - {x: 3, y: 4, z: 0}
+  - {x: 0, y: 2, z: 0}
   rightFruitPos:
   - {x: -5, y: 4, z: 0}
-  - {x: 1, y: 4, z: 0}
-  - {x: 7, y: 3, z: 0}
+  - {x: 6, y: 4, z: 0}

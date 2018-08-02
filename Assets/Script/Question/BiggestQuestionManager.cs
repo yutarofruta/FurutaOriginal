@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BiggestQuestionManager : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class BiggestQuestionManager : MonoBehaviour {
     private int maxNum;     //問題数(QuestionObjectの数)
     private float fruitScale;       //果物の拡大率
     private string fruitTag;    //果物のタグ
+    public string answerTag;       //biggest か smallest
+    public bool isFinished = false;     //ゲームが終了したか
 
     public BiggestQuestionObject[] biggestQuestions;      //BiggestQuestionオブジェクトのプレハブ
 
@@ -17,18 +20,46 @@ public class BiggestQuestionManager : MonoBehaviour {
     public GameObject fruitsParent;     //Instanceする果物の親
     private GameObject[] fruits;     //果物を入れる
     public GameObject target;       //キャラクターが真ん中でストップするときの目印
+    public GameObject basket;
 
     private Vector3[] fruitPos;      //果物の配置場所
 
-    public Text text;       //Awesomeのテキスト
+    public Text qText;      //問題用のテキスト
+    public Text finText;       //Awesomeのテキスト
+
 
     // Use this for initialization
     void Start () {
+        //シーン名を取得する
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        //Resourcesからlevelに対応する問題を読みだして、objectArrayに入れる
+        object[] objectArray = Resources.LoadAll(sceneName + "_" + GameManager.levelNum.ToString(), typeof(BiggestQuestionObject));
+
+        //selectingQuestionの配列の大きさを、呼び出した問題の配列数と揃える
+        System.Array.Resize(ref biggestQuestions, objectArray.Length);
+
+        //objectArrayの中身をselectingQuestionに入れる
+        for (int i = 0; i < objectArray.Length; i++) {
+            biggestQuestions[i] = (BiggestQuestionObject) objectArray[i];
+        }
+
         //問題の数を取得
         maxNum = biggestQuestions.Length;
 
+        //問題の順番入れ替え
+        QuestionShuffle();
+
         //一問目を表示
         GoNextQuestion();
+    }
+
+    private void Update() {
+
+        //ゲームメニューに戻る
+        if(isFinished && Input.GetMouseButtonDown(0)) {
+            SceneManager.LoadScene("GameMenu");
+        }
     }
 
     public void GoNextQuestion() {
@@ -44,6 +75,24 @@ public class BiggestQuestionManager : MonoBehaviour {
 
             //今の対応する問題のデータを持ったquestionObjectを決める
             BiggestQuestionObject questionObject = biggestQuestions[qNum - 1];
+
+            //この問題の答えのタグをbasketに持たせる
+            basket.tag = questionObject.answerTag;
+
+            //問題を表示する
+            //果物が2個の場合はbiggerかsmallerにする
+            if(questionObject.fruitNum == 2) {
+                if(basket.tag == "biggest") {
+                    qText.GetComponent<Text>().text = "Which one is bigger?";
+                }
+                else if (basket.tag == "smallest") {
+                    qText.GetComponent<Text>().text = "Which one is smaller?";
+                }
+            }
+            else {
+                //三個以上の時はbiggestかsmallestにする
+                qText.GetComponent<Text>().text = "Which one is the " + basket.tag.ToString() + "?";
+            }
 
             //Characterを生成し、タグをつけて定位置に置く
             activeCharacter = Instantiate(questionObject.character) as GameObject;
@@ -73,22 +122,43 @@ public class BiggestQuestionManager : MonoBehaviour {
                 //i=0にsmallestタグを付けて縮小、最後のiにbiggestタグをつけて拡大
                 if(i == 0) {
                     fruits[i].tag = "smallest";
-                    fruits[i].transform.localScale = new Vector3(4, 4, 1);
+                    fruits[i].transform.localScale = new Vector3(5, 5, 1);
                 }
                 else if(i == questionObject.fruitNum - 1) {
                     fruits[i].tag = "biggest";
-                    fruits[i].transform.localScale = new Vector3(9, 9, 1);
+                    fruits[i].transform.localScale = new Vector3(7, 7, 1);
                 }
             }
             activeCharacter.GetComponent<Game3Character>().SetMoveTarget(target, 0.1f);
         }
         else {
+            //問題を消す
+            Destroy(qText);
+
             //終了
-            text.GetComponent<Text>().text = "AWESOME!";
+            finText.GetComponent<Text>().text = "AWESOME!";
+
+            //ゲーム終了に指定
+            isFinished = true;
         }
 
         //問題番号を1増やす
         qNum++;
+    }
+
+    // selectingQuestionsをシャッフルする
+    public void QuestionShuffle() {
+        for (int index1 = 0; index1 < biggestQuestions.Length; index1++) {
+            int index2 = Random.Range(0, biggestQuestions.Length - 1);
+            QuestionSwap(ref biggestQuestions[index1], ref biggestQuestions[index2]);
+        }
+    }
+
+    // question1 と questioon2 を入れ替える
+    private void QuestionSwap(ref BiggestQuestionObject question1, ref BiggestQuestionObject question2) {
+        BiggestQuestionObject question = question1;
+        question1 = question2;
+        question2 = question;
     }
 
     // fruitPos[]の中身をシャッフルする
