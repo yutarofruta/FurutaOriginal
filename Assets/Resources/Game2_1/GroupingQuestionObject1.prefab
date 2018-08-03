@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8fbbe32bc076a745a9056d315a11cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftFruit: {fileID: 21300000, guid: e76009c7454b2034c83ad3f5494b700d, type: 3}
-  rightFruit: {fileID: 21300000, guid: 248dd08813c831f488c8f2c67ff8b30b, type: 3}
+  leftFruit: {fileID: 21300000, guid: f442b6f17502a9c498ad0dbb67fac4f6, type: 3}
+  rightFruit: {fileID: 21300000, guid: e32756fbc9057b842996e6a828b5a0b7, type: 3}
   leftFruitNum: 2
   rightFruitNum: 3
   leftFruitTag: cherry

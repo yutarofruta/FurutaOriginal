@@ -10,5 +10,7 @@ public class SelectingQuestionObject : MonoBehaviour {
     public string answerTag;
     public GameObject Character;
 
+    public int clearLevelNum;
+
 	// Use this for initialization
 }

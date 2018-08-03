@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionMessage: Which is Cherry?
-  answerSprite: {fileID: 21300000, guid: e76009c7454b2034c83ad3f5494b700d, type: 3}
-  goalSprite: {fileID: 21300000, guid: 2b79b23e06f37db4bb8f135f2f9fb5de, type: 3}
+  answerSprite: {fileID: 21300000, guid: f442b6f17502a9c498ad0dbb67fac4f6, type: 3}
+  goalSprite: {fileID: 21300000, guid: 310d05e6cf5ca614dba497ecead0f56b, type: 3}
   answerTag: cherry
   Character: {fileID: 1087779848371844, guid: d4f884158d0d6604c891b33d8462a87b, type: 2}

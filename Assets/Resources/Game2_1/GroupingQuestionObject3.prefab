@@ -51,13 +51,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8fbbe32bc076a745a9056d315a11cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftFruit: {fileID: 21300000, guid: f7b3f24a623943e4a97484755daf0642, type: 3}
-  rightFruit: {fileID: 21300000, guid: 0afeca1f386c2b34293ccfac866c258b, type: 3}
+  leftFruit: {fileID: 21300000, guid: ad01005f64cd71a4b91a4d92757c168d, type: 3}
+  rightFruit: {fileID: 21300000, guid: 81e000c4094f6564284338c14d3ea396, type: 3}
   leftFruitNum: 3
   rightFruitNum: 3
-  leftFruitTag: orange
+  leftFruitTag: melon
   rightFruitTag: pine
-  leftCharacter: {fileID: 1602409734487834, guid: dac0c6a937ac1594bae90c16616e772b,
+  leftCharacter: {fileID: 1189881068858806, guid: 5c2a56bd7daa60c469c8aff4d18fdfa3,
     type: 2}
   rightCharacter: {fileID: 1262047131912818, guid: 5b7fafac4dda03a44afae3b1d6606662,
     type: 2}

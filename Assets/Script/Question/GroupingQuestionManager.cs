@@ -86,12 +86,12 @@ public class GroupingQuestionManager : MonoBehaviour {
             //leftCharacterを生成し、タグをつけて左定位置に置く
             leftCharacter = Instantiate(questionObject.leftCharacter) as GameObject;
             leftCharacter.tag = "leftCharacter";
-            leftCharacter.transform.position = new Vector3(-11f, 1, 0);
+            leftCharacter.transform.position = new Vector3(-11f, -3, 0);
 
             //rightCharacterを生成し、タグをつけて右定位置に置く
             rightCharacter = Instantiate(questionObject.rightCharacter) as GameObject;
             rightCharacter.tag = "rightCharacter";
-            rightCharacter.transform.position = new Vector3(11f, 1, 0);
+            rightCharacter.transform.position = new Vector3(11f, -3, 0);
 
             //バスケットにタグをつける
             leftBasket.tag = questionObject.leftFruitTag;
@@ -120,8 +120,8 @@ public class GroupingQuestionManager : MonoBehaviour {
             }
 
             //キャラクターを動き始めさせる
-            leftCharacter.GetComponent<Game2Character>().SetMoveTarget(target, 6.0f);
-            rightCharacter.GetComponent<Game2Character>().SetMoveTarget(target, 6.0f);
+            leftCharacter.GetComponent<Game2Character>().SetMoveTarget(target, 7.6f);
+            rightCharacter.GetComponent<Game2Character>().SetMoveTarget(target, 7.6f);
         }
         else {
             //終了

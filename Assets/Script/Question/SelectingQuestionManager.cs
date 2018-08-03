@@ -108,7 +108,11 @@ public class SelectingQuestionManager : MonoBehaviour {
             //問題文を消す
             finText.GetComponent<Text>().text = "AWESOME!";
 
+            //ゲーム終了
             isFinished = true;
+
+            //次のレベルを遊べるようにする
+            GameManager.clearLevelDic["Game1"] = GameManager.levelNum + 1;
         }
 
         //問題番号を1増やす

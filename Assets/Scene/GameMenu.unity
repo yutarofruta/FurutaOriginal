@@ -184,7 +184,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 325117871}
   m_OnClick:
     m_PersistentCalls:
@@ -323,6 +323,7 @@ MonoBehaviour:
   - {fileID: 2045825794}
   - {fileID: 1375821747}
   - {fileID: 325117868}
+  gameManager: {fileID: 985187676}
 --- !u!1 &524717899
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,6 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUp: {fileID: 507567183}
+  gameName: 
 --- !u!4 &985187678
 Transform:
   m_ObjectHideFlags: 0
@@ -909,7 +911,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1041385354}
   m_OnClick:
     m_PersistentCalls:
@@ -1678,7 +1680,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1375821750}
   m_OnClick:
     m_PersistentCalls:
@@ -2007,7 +2009,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1681723806}
   m_OnClick:
     m_PersistentCalls:
@@ -2277,7 +2279,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2045825797}
   m_OnClick:
     m_PersistentCalls:

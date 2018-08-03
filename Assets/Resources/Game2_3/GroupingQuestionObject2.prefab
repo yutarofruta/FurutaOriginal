@@ -51,15 +51,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8fbbe32bc076a745a9056d315a11cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftFruit: {fileID: 21300000, guid: 244687e2f3c96fa40816c86cffb24653, type: 3}
-  rightFruit: {fileID: 21300000, guid: b031e0626831cdd4ba677adea57b7122, type: 3}
+  leftFruit: {fileID: 21300000, guid: 81e000c4094f6564284338c14d3ea396, type: 3}
+  rightFruit: {fileID: 21300000, guid: fd29617e97c0c7c4f93271204365b00b, type: 3}
   leftFruitNum: 4
   rightFruitNum: 4
-  leftFruitTag: apple
-  rightFruitTag: melon
-  leftCharacter: {fileID: 1266505548215542, guid: 94367456301ad8f4496f7877de4bd53b,
+  leftFruitTag: pine
+  rightFruitTag: apple
+  leftCharacter: {fileID: 1262047131912818, guid: 5b7fafac4dda03a44afae3b1d6606662,
     type: 2}
-  rightCharacter: {fileID: 1189881068858806, guid: 5c2a56bd7daa60c469c8aff4d18fdfa3,
+  rightCharacter: {fileID: 1266505548215542, guid: 94367456301ad8f4496f7877de4bd53b,
     type: 2}
   leftFruitPos:
   - {x: -7, y: 3, z: 0}

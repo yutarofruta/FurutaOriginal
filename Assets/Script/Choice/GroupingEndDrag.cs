@@ -32,10 +32,12 @@ public class GroupingEndDrag : MonoBehaviour {
         if (isCorrect) {
             gameObject.GetComponent<ChoiceController>().isTouchable = false;
 
+            /*
             //置く場所が余りにも下過ぎたら修正する
             if (gameObject.transform.position.y < basket.transform.position.y) {
                 transform.position = new Vector3(transform.position.x, basket.transform.position.y + 0.5f, 1);
             }
+            */
 
             //GroupingQuestionManagerのcorrectNumに加算する
             questionManager.GetComponent<GroupingQuestionManager>().AddCorrectNum();

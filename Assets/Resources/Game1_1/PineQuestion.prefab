@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionMessage: Which is Pineapple?
-  answerSprite: {fileID: 21300000, guid: 0afeca1f386c2b34293ccfac866c258b, type: 3}
-  goalSprite: {fileID: 21300000, guid: 41b9a6a53b5e3fd47897c67cc45b60f6, type: 3}
+  answerSprite: {fileID: 21300000, guid: 81e000c4094f6564284338c14d3ea396, type: 3}
+  goalSprite: {fileID: 21300000, guid: 31e566a3831d2c0449bd1afb7e46bd61, type: 3}
   answerTag: pine
   Character: {fileID: 1540353442889622, guid: 7d39f9831a911de43bf48ad1aacb75a1, type: 2}

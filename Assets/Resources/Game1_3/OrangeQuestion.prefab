@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionMessage: Which is Orange?
-  answerSprite: {fileID: 21300000, guid: f7b3f24a623943e4a97484755daf0642, type: 3}
-  goalSprite: {fileID: 21300000, guid: 91c4cf1027e13504fbe84d027ba42feb, type: 3}
+  answerSprite: {fileID: 21300000, guid: 2d201b12f1f95184a94529998214241e, type: 3}
+  goalSprite: {fileID: 21300000, guid: 708263996eda86341b6a603798605d6c, type: 3}
   answerTag: orange
   Character: {fileID: 1190035125303740, guid: ecb34eaf624118f40982ecb0d22b09ea, type: 2}
