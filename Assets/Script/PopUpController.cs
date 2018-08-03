@@ -27,7 +27,7 @@ public class PopUpController : MonoBehaviour {
             levelButton[i].SetActive(true);
 
             //押されたゲーム名に対応するclearLevelをGameManagerから読み込み、それ以下のボタンを触れるようにする
-            if(i <= GameManager.clearLevelDic[gameName]) {
+            if(i < GameManager.openLevelDic[gameName]) {
                 levelButton[i].GetComponent<Button>().interactable = true;
             }
         }

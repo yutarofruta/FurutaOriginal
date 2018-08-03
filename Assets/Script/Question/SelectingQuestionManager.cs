@@ -112,7 +112,10 @@ public class SelectingQuestionManager : MonoBehaviour {
             isFinished = true;
 
             //次のレベルを遊べるようにする
-            GameManager.clearLevelDic["Game1"] = GameManager.levelNum + 1;
+            if(GameManager.openLevelDic["Game1"] == GameManager.levelNum) {
+                GameManager.openLevelDic["Game1"] = GameManager.levelNum + 1;
+                Debug.Log("レベルを開放する");
+            }
         }
 
         //問題番号を1増やす

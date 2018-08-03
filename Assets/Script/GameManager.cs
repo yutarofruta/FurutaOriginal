@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
 
     private static bool created = false;        //GameManagerのDontDestroyOnLoadがされたかどうか
 
-    public static Dictionary<string, int> clearLevelDic;        //ゲーム名とクリアレベル数を記録
+    public static Dictionary<string, int> openLevelDic;        //ゲーム名とクリアレベル数を記録
 
     //GameManagerのDontDestroyOnLoadする
     void Awake() {
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         popUp.SetActive(false);
-        clearLevelDic = new Dictionary<string, int>();
+        openLevelDic = new Dictionary<string, int>();
     }
 
     //押されたゲームの[level]レベルに遷移
@@ -46,9 +46,11 @@ public class GameManager : MonoBehaviour {
         popUp.SetActive(isPopUpActive);
 
         //対応するgameNameのDictionaryができていなかったら、clearLevelを1した要素を追加する
-        if (clearLevelDic.ContainsKey(gameName)) {
-            clearLevelDic.Add(gameName, 1);
+        if (!openLevelDic.ContainsKey(gameName)) {
+            openLevelDic.Add(gameName, 1);
+        } else {
             Debug.Log(gameName);
+            Debug.Log(openLevelDic[gameName]);
         }
     }
 }
