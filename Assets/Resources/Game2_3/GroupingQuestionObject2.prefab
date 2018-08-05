@@ -62,12 +62,12 @@ MonoBehaviour:
   rightCharacter: {fileID: 1266505548215542, guid: 94367456301ad8f4496f7877de4bd53b,
     type: 2}
   leftFruitPos:
-  - {x: -7, y: 3, z: 0}
-  - {x: -3, y: 4, z: 0}
-  - {x: -2, y: 2, z: 0}
-  - {x: 2, y: 1, z: 0}
+  - {x: -3, y: 3.5, z: 0}
+  - {x: -1.7, y: 1.8, z: 0}
+  - {x: -2.5, y: 0, z: 0}
+  - {x: 4, y: 3.5, z: 0}
   rightFruitPos:
-  - {x: -5, y: 4, z: 0}
-  - {x: 1, y: 4, z: 0}
-  - {x: 4, y: 2, z: 0}
-  - {x: 7, y: 3, z: 0}
+  - {x: -4.5, y: 1.2, z: 0}
+  - {x: 2.3, y: 2, z: 0}
+  - {x: 3.2, y: 0, z: 0}
+  - {x: 5, y: 1, z: 0}

@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1935ed8bb65088b43af30d3e47e10271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruit: {fileID: 21300000, guid: 0afeca1f386c2b34293ccfac866c258b, type: 3}
+  fruit: {fileID: 21300000, guid: 81e000c4094f6564284338c14d3ea396, type: 3}
   fruitNum: 2
   fruitTag: pine
   answerTag: biggest

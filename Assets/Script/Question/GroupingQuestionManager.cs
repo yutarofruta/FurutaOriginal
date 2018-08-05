@@ -129,6 +129,12 @@ public class GroupingQuestionManager : MonoBehaviour {
 
             //ゲーム終了に設定
             isFinished = true;
+
+            //次のレベルを遊べるようにする
+            if (GameManager.openLevelDic["Game2"] == GameManager.levelNum) {
+                GameManager.openLevelDic["Game2"] = GameManager.levelNum + 1;
+                Debug.Log("レベル開放");
+            }
         }
 
         //問題番号を1増やす

@@ -96,7 +96,7 @@ public class BiggestQuestionManager : MonoBehaviour {
 
             //Characterを生成し、タグをつけて定位置に置く
             activeCharacter = Instantiate(questionObject.character) as GameObject;
-            activeCharacter.transform.position = new Vector3(-11f, 1, 0);
+            activeCharacter.transform.position = new Vector3(-11f, -3, 0);
 
             //fruitのオブジェクトを入れる配列の数を、各問題の果物数に合わせる
             fruits = new GameObject[questionObject.fruitNum];
@@ -140,6 +140,12 @@ public class BiggestQuestionManager : MonoBehaviour {
 
             //ゲーム終了に指定
             isFinished = true;
+
+            //次のレベルを遊べるようにする
+            if (GameManager.openLevelDic["Game3"] == GameManager.levelNum) {
+                GameManager.openLevelDic["Game3"] = GameManager.levelNum + 1;
+                Debug.Log("レベル開放");
+            }
         }
 
         //問題番号を1増やす

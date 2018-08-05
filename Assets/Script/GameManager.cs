@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     public GameObject popUp;        //ポップアップ
+
     private bool isPopUpActive = false;     //ポップアップが表示されているかどうか
     public string gameName;        //選択されているゲームの名前
+
     public static int levelNum;     //レベル数
 
-    private static bool created = false;        //GameManagerのDontDestroyOnLoadがされたかどうか
+    public static bool created = false;        //GameManagerのDontDestroyOnLoadがされたかどうか
 
     public static Dictionary<string, int> openLevelDic;        //ゲーム名とクリアレベル数を記録
 
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
+        popUp = GameObject.Find("Canvas").transform.Find("PopUp").gameObject;
         popUp.SetActive(false);
         openLevelDic = new Dictionary<string, int>();
     }
@@ -43,7 +46,7 @@ public class GameManager : MonoBehaviour {
 
         //表示・非表示
         isPopUpActive = !isPopUpActive;
-        popUp.SetActive(isPopUpActive);
+        popUp.gameObject.SetActive(isPopUpActive);
 
         //対応するgameNameのDictionaryができていなかったら、clearLevelを1した要素を追加する
         if (!openLevelDic.ContainsKey(gameName)) {

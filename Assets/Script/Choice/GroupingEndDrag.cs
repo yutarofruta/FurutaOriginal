@@ -5,14 +5,12 @@ using UnityEngine;
 public class GroupingEndDrag : MonoBehaviour {
 
     private GameObject questionManager;
-    private GameObject basket;
 
     private bool isCorrect;
     private bool isTouchable;
 
     private void Start() {
         questionManager = GameObject.Find("QuestionManager");
-        basket = questionManager.GetComponent<GroupingQuestionManager>().leftBasket;
     }
 
     public void CountingCorrect() {
@@ -30,14 +28,7 @@ public class GroupingEndDrag : MonoBehaviour {
 
         //ドラッグが終わったと時に正解だったら停止して正解カウントにプラス。正解でなければSpringJointで戻る
         if (isCorrect) {
-            gameObject.GetComponent<ChoiceController>().isTouchable = false;
-
-            /*
-            //置く場所が余りにも下過ぎたら修正する
-            if (gameObject.transform.position.y < basket.transform.position.y) {
-                transform.position = new Vector3(transform.position.x, basket.transform.position.y + 0.5f, 1);
-            }
-            */
+            gameObject.GetComponent<ChoiceController>().isTouchable = false;         
 
             //GroupingQuestionManagerのcorrectNumに加算する
             questionManager.GetComponent<GroupingQuestionManager>().AddCorrectNum();
