@@ -30,19 +30,9 @@ public class BiggestQuestionManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //シーン名を取得する
-        string sceneName = SceneManager.GetActiveScene().name;
 
-        //Resourcesからlevelに対応する問題を読みだして、objectArrayに入れる
-        object[] objectArray = Resources.LoadAll(sceneName + "_" + GameManager.levelNum.ToString(), typeof(BiggestQuestionObject));
-
-        //selectingQuestionの配列の大きさを、呼び出した問題の配列数と揃える
-        System.Array.Resize(ref biggestQuestions, objectArray.Length);
-
-        //objectArrayの中身をselectingQuestionに入れる
-        for (int i = 0; i < objectArray.Length; i++) {
-            biggestQuestions[i] = (BiggestQuestionObject) objectArray[i];
-        }
+        //問題を読み出す
+        ReadQuestion();
 
         //問題の数を取得
         maxNum = biggestQuestions.Length;
@@ -181,4 +171,21 @@ public class BiggestQuestionManager : MonoBehaviour {
         position1 = position2;
         position2 = postion;
     }
+
+    public void ReadQuestion() {
+        //シーン名を取得する
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        //Resourcesからlevelに対応する問題を読みだして、objectArrayに入れる
+        object[] objectArray = Resources.LoadAll(sceneName + "_" + GameManager.levelNum.ToString(), typeof(BiggestQuestionObject));
+
+        //selectingQuestionの配列の大きさを、呼び出した問題の配列数と揃える
+        System.Array.Resize(ref biggestQuestions, objectArray.Length);
+
+        //objectArrayの中身をselectingQuestionに入れる
+        for (int i = 0; i < objectArray.Length; i++) {
+            biggestQuestions[i] = (BiggestQuestionObject)objectArray[i];
+        }
+    }
+
 }

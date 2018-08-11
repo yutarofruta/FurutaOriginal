@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SharingQuestion : MonoBehaviour {
+public class _StandJumpCharacter : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

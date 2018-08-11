@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SharingObject : MonoBehaviour {
+public class SharingQuestionManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

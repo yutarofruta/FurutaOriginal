@@ -23,19 +23,8 @@ public class SelectingQuestionManager : MonoBehaviour {
 
     private void Start() {
 
-        //シーン名を取得する
-        string sceneName = SceneManager.GetActiveScene().name;
-
-        //Resourcesからlevelに対応する問題を読みだして、objectArrayに入れる
-        object[] objectArray = Resources.LoadAll(sceneName + "_" + GameManager.levelNum.ToString(), typeof(SelectingQuestionObject));
-
-        //selectingQuestionの配列の大きさを、呼び出した問題の配列数と揃える
-        System.Array.Resize(ref selectingQuestions, objectArray.Length);
-
-        //objectArrayの中身をselectingQuestionに入れる
-        for (int i = 0; i < objectArray.Length; i++) {
-            selectingQuestions[i] = (SelectingQuestionObject) objectArray[i];
-        }
+        //問題を読み出す
+        ReadQuestion();
 
         //selectingQuestionsをシャッフル
         QuestionShuffle();
@@ -152,6 +141,21 @@ public class SelectingQuestionManager : MonoBehaviour {
         choice2 = choice;
     }
 
+    public void ReadQuestion() {
+        //シーン名を取得する
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        //Resourcesからlevelに対応する問題を読みだして、objectArrayに入れる
+        object[] objectArray = Resources.LoadAll(sceneName + "_" + GameManager.levelNum.ToString(), typeof(SelectingQuestionObject));
+
+        //selectingQuestionの配列の大きさを、呼び出した問題の配列数と揃える
+        System.Array.Resize(ref selectingQuestions, objectArray.Length);
+
+        //objectArrayの中身をselectingQuestionに入れる
+        for (int i = 0; i < objectArray.Length; i++) {
+            selectingQuestions[i] = (SelectingQuestionObject)objectArray[i];
+        }
+    }
 
 
 

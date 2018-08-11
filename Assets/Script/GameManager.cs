@@ -5,9 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    public GameObject popUp;        //ポップアップ
+    private GameObject popUp;        //ポップアップ
 
-    private bool isPopUpActive = false;     //ポップアップが表示されているかどうか
     public string gameName;        //選択されているゲームの名前
 
     public static int levelNum;     //レベル数
@@ -24,29 +23,27 @@ public class GameManager : MonoBehaviour {
             Debug.Log("Awake: " + this.gameObject);
         }
     }
-
+    
     private void Start() {
-        popUp = GameObject.Find("Canvas").transform.Find("PopUp").gameObject;
-        popUp.SetActive(false);
-        openLevelDic = new Dictionary<string, int>();
+        openLevelDic = new Dictionary<string, int>();       //Dictionaryを登録
+    }
+    
+    private void Update() {
+
+        //GameMenuでpopUpを持っていなかったらFindする
+        if(popUp == null && SceneManager.GetActiveScene().name == "GameMenu") {
+            popUp = GameObject.Find("Canvas").transform.Find("PopUp").gameObject;
+        }
     }
 
-    //押されたゲームの[level]レベルに遷移
-    public void LoadGame(int level) {
-
-        levelNum = level;
-        SceneManager.LoadScene(gameName);
-    }
-
-    //ポップアップを表示・非表示
-    public void PopUpSetActice(string game) {
+    //ポップアップを表示
+    public void PopUpSetActive(string game) {
 
         //押されたゲーム名を保存
-        this.gameName = game;
+        gameName = game;
 
-        //表示・非表示
-        isPopUpActive = !isPopUpActive;
-        popUp.gameObject.SetActive(isPopUpActive);
+        //ポップアップを表示
+        popUp.gameObject.SetActive(true);
 
         //対応するgameNameのDictionaryができていなかったら、clearLevelを1した要素を追加する
         if (!openLevelDic.ContainsKey(gameName)) {

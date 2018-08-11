@@ -8,12 +8,15 @@ public class GameManagerSetter : MonoBehaviour {
     private GameObject gameManager;     //インスタンス化したgameManager
     private bool isCreated;     //GameManagerオブジェクトが既に生成されたかどうか
 
-    private void Start() {
+    private void Awake() {
         isCreated = GameManager.created;        //GameManagerが生成されているかどうか確認
 
         //もしまだ生成していなければGameManagerを生成する
         if (!isCreated) {
             gameManager = Instantiate(gameManagerPrefab) as GameObject;
+            gameManager.name = "GameManager";
         }
     }
+
+
 }
