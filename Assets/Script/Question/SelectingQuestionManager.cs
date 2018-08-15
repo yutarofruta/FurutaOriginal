@@ -156,8 +156,4 @@ public class SelectingQuestionManager : MonoBehaviour {
             selectingQuestions[i] = (SelectingQuestionObject)objectArray[i];
         }
     }
-
-
-
-
 }

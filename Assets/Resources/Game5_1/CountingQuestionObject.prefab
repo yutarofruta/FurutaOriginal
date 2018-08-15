@@ -55,13 +55,7 @@ MonoBehaviour:
   fruitNum: 1
   character: {fileID: 1858889661319872, guid: 904a8b3869fae5f40a8e470937334e64, type: 2}
   fruitPos:
-  - {x: -2, y: 0, z: 0}
-  - {x: -1, y: 0, z: 0}
-  - {x: 1, y: 0, z: 0}
-  - {x: 2, y: 0, z: 0}
+  - {x: 0, y: 1, z: 0}
   buttonNum:
   - 1
   - 2
-  - 3
-  - 4
-  answerNum: 4

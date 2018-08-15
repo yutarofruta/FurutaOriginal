@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 
     public static bool created = false;        //GameManagerのDontDestroyOnLoadがされたかどうか
 
-    public static Dictionary<string, int> openLevelDic;        //ゲーム名とクリアレベル数を記録
+    public static Dictionary<string, int> openLevelDic = new Dictionary<string, int>();   //ゲーム名とクリアレベル数を記録
 
     //GameManagerのDontDestroyOnLoadする
     void Awake() {
@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour {
     }
     
     private void Start() {
-        openLevelDic = new Dictionary<string, int>();       //Dictionaryを登録
     }
     
     private void Update() {

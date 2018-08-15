@@ -13,7 +13,7 @@ public class CountingQuestionManager : MonoBehaviour {
 
     public GameObject fruit;        //果物のプレハブ
     public GameObject[] activeFruits;       //画面上にある果物
-    private GameObject character;     //現在扱っている果物のキャラクター
+    public GameObject character;     //現在扱っている果物のキャラクター
 
     public Button[] buttons;   //選択肢用のボタン
     private string[] optionNumbers;     //ボタンに入れる数字
@@ -27,8 +27,8 @@ public class CountingQuestionManager : MonoBehaviour {
         //問題を読み出す
         ReadQuestion();
 
-        //selectingQuestionsをシャッフル
-        QuestionShuffle();
+        //出題順をシャッフル
+        //QuestionShuffle();
 
         //問題の数を取得
         maxNum = countingQuestions.Length;
@@ -59,19 +59,39 @@ public class CountingQuestionManager : MonoBehaviour {
 
             //今の対応する問題のデータを持ったquestionObjectを決める
             CountingQuestionObject questionObject = countingQuestions[qNum - 1];
-            
+
+            //一問目だったらキャラクターを生成する
+            if(qNum == 1) {
+                character = Instantiate(questionObject.character);
+            }
+
+            //activeFruits[]の要素数と果物の数を対応
+            activeFruits = new GameObject[questionObject.fruitNum];
             
             //果物を生成する
             for (int i = 0; i < questionObject.fruitNum; i++) {
                 activeFruits[i] = Instantiate(fruit, questionObject.fruitPos[i], Quaternion.identity);
                 activeFruits[i].GetComponent<SpriteRenderer>().sprite = questionObject.fruit;
+                activeFruits[i].GetComponent<SpriteRenderer>().sortingOrder = 1;
             }
-            
-            
+
+            //optionNumbers[]の要素数とボタンの数を対応
+            optionNumbers = new string[questionObject.buttonNum.Length];
+
+            //ボタンに表示される数字をquestionObjectから取得する
+            for (int i = 0; i < questionObject.buttonNum.Length; i++) {
+                optionNumbers[i] = questionObject.buttonNum[i];
+            }
+
+            //ボタンに表示する数字をシャッフルする
+            OptionNumberShuffle();
+
             //ボタンの個数を変更する
             for (int i = 0; i < buttons.Length; i++) {
                 if (i < questionObject.buttonNum.Length) {
-                    buttons[i].GetComponentInChildren<Text>().text = questionObject.buttonNum[i];
+                    buttons[i].GetComponentInChildren<Text>().text = optionNumbers[i];
+                    buttons[i].gameObject.SetActive(true);
+                    buttons[i].GetComponent<Button>().interactable = true;
                 }
                 else {
                     buttons[i].gameObject.SetActive(false);
@@ -84,6 +104,11 @@ public class CountingQuestionManager : MonoBehaviour {
 
             //問題文を消す
             finText.GetComponent<Text>().text = "AWESOME!";
+
+            //ボタンをすべて非表示にする
+            for (int i = 0; i < buttons.Length; i++) {
+                buttons[i].gameObject.SetActive(false);
+            }
 
             //ゲーム終了
             isFinished = true;
@@ -99,10 +124,10 @@ public class CountingQuestionManager : MonoBehaviour {
         qNum++;
     }
 
-    // selectingQuestionsをシャッフルする
+    //questionObjectをシャッフルする
     public void QuestionShuffle() {
         for (int index1 = 0; index1 < countingQuestions.Length; index1++) {
-            int index2 = Random.Range(0, countingQuestions.Length - 1);
+            int index2 = Random.Range(0, countingQuestions.Length);
             QuestionSwap(ref countingQuestions[index1], ref countingQuestions[index2]);
         }
     }
@@ -112,6 +137,21 @@ public class CountingQuestionManager : MonoBehaviour {
         CountingQuestionObject question = question1;
         question1 = question2;
         question2 = question;
+    }
+
+    //optionNumberをシャッフルする
+    public void OptionNumberShuffle() {
+        for (int index1 = 0; index1 < optionNumbers.Length; index1++) {
+            int index2 = Random.Range(0, optionNumbers.Length);
+            NumberSwap(ref optionNumbers[index1], ref optionNumbers[index2]);
+        }
+    }
+
+    // number1 と number2 を入れ替える
+    private void NumberSwap(ref string number1, ref string number2) {
+        string number = number1;
+        number1 = number2;
+        number2 = number;
     }
 
     public void ReadQuestion() {
