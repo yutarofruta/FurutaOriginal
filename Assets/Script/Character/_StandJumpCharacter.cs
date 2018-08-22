@@ -5,7 +5,7 @@ using UnityEngine;
 public class StandJumpCharacter : MonoBehaviour {
 
     Animator anim;
-    AnimatorStateInfo animInfo;
+    public AnimatorStateInfo animInfo;
 
     public GameObject choiceManager;
     public GameObject questionManager;

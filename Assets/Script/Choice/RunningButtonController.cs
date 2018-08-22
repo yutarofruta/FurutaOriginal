@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CountingButtonController : MonoBehaviour {
+public class RunningButtonController : MonoBehaviour {
 
     public bool isTouchable = true;
 
@@ -17,28 +17,26 @@ public class CountingButtonController : MonoBehaviour {
 
         //クリックされたボタンを取得
         Button clickedButton = options[buttonNum];
-        
+
         //クリックされたボタンの子Textを取得
         string getText = clickedButton.gameObject.GetComponentInChildren<Text>().text;
 
         //表示されている果物の個数をstringにして取得
-        string answerText = questionManager.GetComponent<CountingQuestionManager>().activeFruits.Length.ToString();
+        string answerText = questionManager.GetComponent<RunningQuestionManager>().activeFruits.Length.ToString();
 
-        //キャラクターを取得
-        character = questionManager.GetComponent<CountingQuestionManager>().character;
-
-        //ボタンの子Textと果物の数が等しければ、キャラクターにジャンプさせて次の問題に移る
+        //ボタンの子Textと果物の数が等しければ、キャラクターを少し前に出して次の問題に移る
         if (getText == answerText) {
 
-            character.GetComponent<Animator>().SetTrigger("JumpTrigger");
+            //キャラクターを少し前に出す
+            character.GetComponent<Game6Character>().Recover();
 
             //ボタンを暗くする
             for (int i = 0; i < options.Length; i++) {
                 options[i].GetComponent<Button>().interactable = false;
             }
 
-            //2秒したら次の問題に移る
-            Invoke("CallGoNextQuestion", 2);
+            //1秒したら次の問題に移る
+            Invoke("CallGoNextQuestion", 1);
         }
         else {
             //character.GetComponent<Animator>().SetTrigger("WrongTrigger");
@@ -46,6 +44,6 @@ public class CountingButtonController : MonoBehaviour {
     }
 
     public void CallGoNextQuestion() {
-        questionManager.GetComponent<CountingQuestionManager>().GoNextQuestion();
+        questionManager.GetComponent<RunningQuestionManager>().GoNextQuestion();
     }
 }
