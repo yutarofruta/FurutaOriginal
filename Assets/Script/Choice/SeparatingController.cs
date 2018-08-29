@@ -38,22 +38,22 @@ public class SeparatingController : MonoBehaviour {
             Vector3 vec = touch.position;
             vec.z = 10f;
             vec = Camera.main.ScreenToWorldPoint(vec);
-            if(vec.x > -8 || vec.x < 8) {
+            if(vec.x > -7.5 && vec.x < 7.5) {
                 transform.position = new Vector3(vec.x, transform.position.y, vec.z);
             }
             else {
-                transform.position = new Vector3(-8, transform.position.y, vec.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y, vec.z);
             }
         }
         else if (Input.GetMouseButton(0)) {
             Vector3 vec = Input.mousePosition;
             vec.z = 10f;
             vec = Camera.main.ScreenToWorldPoint(vec);
-            if (vec.x > -8 || vec.x < 8) {
+            if (vec.x > -7.5 && vec.x < 7.5) {
                 transform.position = new Vector3(vec.x, transform.position.y, vec.z);
             }
             else {
-                transform.position = new Vector3(-8, transform.position.y, vec.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y, vec.z);
             }
         }
         
@@ -82,11 +82,11 @@ public class SeparatingController : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D collision) {
 
-        if(collision == leftPlate) {
+        if(collision.gameObject == leftPlate) {
             questonManger.GetComponent<SeparatingQuestionManager>().leftCurrentNum++;
             Debug.Log("leftNum++");
         }
-        else if (collision == rightPlate) {
+        else if (collision.gameObject == rightPlate) {
             questonManger.GetComponent<SeparatingQuestionManager>().rightCurrentNum++;
             Debug.Log("rightNum++");
         }
@@ -95,11 +95,11 @@ public class SeparatingController : MonoBehaviour {
 
     public void OnTriggerExit2D(Collider2D collision) {
 
-        if (collision == leftPlate) {
+        if (collision.gameObject == leftPlate) {
             questonManger.GetComponent<SeparatingQuestionManager>().leftCurrentNum--;
             Debug.Log("leftNum--");
         }
-        else if (collision == rightPlate) {
+        else if (collision.gameObject == rightPlate) {
             questonManger.GetComponent<SeparatingQuestionManager>().rightCurrentNum--;
             Debug.Log("rightNum--");
         }
