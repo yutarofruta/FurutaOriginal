@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4601177954767584}
   - component: {fileID: 114754896475708794}
   m_Layer: 0
-  m_Name: RunningQuestionObject 3
+  m_Name: RunningQuestionObject 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,8 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruit: {fileID: 21300000, guid: 81e000c4094f6564284338c14d3ea396, type: 3}
-  fruitNum: 3
+  fruitNum: 2
   fruitPos:
-  - {x: -2, y: 2, z: 0}
-  - {x: 0, y: 2, z: 0}
-  - {x: 2, y: 2, z: 0}
+  - {x: -1, y: 2, z: 0}
+  - {x: 1, y: 2, z: 0}

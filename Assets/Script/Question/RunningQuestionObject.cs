@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class RunningQuestionObject : MonoBehaviour {
 
-    public Sprite fruit;
-    public int fruitNum;
-    public Vector3[] fruitPos;
-    public string[] buttonNum;
+    public Sprite fruit;        //果物プレハブ
+    public int fruitNum;        //表示する個数
+    public Vector3[] fruitPos;       //表示する位置
 }

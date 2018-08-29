@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class RunningQuestionManager : MonoBehaviour {
 
     public Text finText;    //ゲーム終了時に出すテキスト
+    public Text qText;      //How many?と表示するテキスト
     private int qNum = 1;    　//問題番号
     private int maxNum;     //問題数
     private bool isFinished = false;        //ゲーム終了
@@ -14,6 +15,7 @@ public class RunningQuestionManager : MonoBehaviour {
 
     public GameObject fruit;        //果物のプレハブ
     public GameObject[] activeFruits;       //画面上にある果物
+    public GameObject[] backGrounds;
 
     public Button[] buttons;   //選択肢用のボタン
 
@@ -79,6 +81,9 @@ public class RunningQuestionManager : MonoBehaviour {
         //全部の問題が終わったら
         if (qNum > maxNum) {
 
+            //キャラクターと背景のスクロール停止
+            StopScroll();
+
             //キャラクターにジャンプさせる
             character.GetComponent<Animator>().SetTrigger("RunningClear");
 
@@ -104,10 +109,20 @@ public class RunningQuestionManager : MonoBehaviour {
         qNum++;
     }
 
-    //ゲームオーバー状態にする
+    //ゲームオーバー状態にして、スクロールを止め、GAMEOVERテキストを表示する
     public void GameOver() {
         isGamwOver = true;
         finText.GetComponent<Text>().text = "GAMEOVER";
+        StopScroll();
+    }
+
+    //スクロールをやめる
+    public void StopScroll() {
+        character.GetComponent<Game6Character>().isScroll = false;
+        for (int i = 0; i < backGrounds.Length; i++) {
+            backGrounds[i].GetComponent<BackGroundController>().isScroll = false;
+        }
+        qText.GetComponent<Text>().text = "";
     }
 
     //questionObjectをシャッフルする
