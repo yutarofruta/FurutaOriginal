@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class SeparatingQuestionManager : MonoBehaviour {
 
     public Text finText;    //ゲーム終了時に出すテキスト
-    public Text leftCharacterText;      //左のキャラクターのセリフ
-    public Text rightCharacterText;      //右のキャラクターのセリフ
+    public Image leftBalloon;      //左のキャラクターの吹き出し
+    public Image rightBalloon;      //右のキャラクターの吹き出し
     private int qNum = 1;    　//問題番号
     private int maxNum;     //問題数
     public int leftAnswerNum;        //左の果物数の正解
@@ -68,8 +68,8 @@ public class SeparatingQuestionManager : MonoBehaviour {
             rightAnswerNum = questionObject.rightFruitNum;
 
             //キャラクターのセリフを答えの数に合わせる
-            leftCharacterText.text = "I want to eat\n" + leftAnswerNum.ToString() + "\napples";
-            rightCharacterText.text = "I want to eat\n" + rightAnswerNum.ToString() + "\napples";
+            leftBalloon.GetComponentInChildren<Text>().text = "I want to eat\n" + "<size=35><color=red>" + leftAnswerNum.ToString() + "</color></size>" + "\napples";
+            rightBalloon.GetComponentInChildren<Text>().text = "I want to eat\n" + "<size=35><color=red>" + rightAnswerNum.ToString() + "</color></size>" + "\napples";
 
             //activeFruits[]の要素数と果物の数を対応
             activeFruits = new GameObject[questionObject.fruitNum];
@@ -87,6 +87,10 @@ public class SeparatingQuestionManager : MonoBehaviour {
             //問題文を消す
             finText.GetComponent<Text>().text = "AWESOME!";
 
+            //吹き出しを消す
+            leftBalloon.gameObject.SetActive(false);
+            rightBalloon.gameObject.SetActive(false);
+
             //ゲーム終了
             isFinished = true;
 
@@ -102,6 +106,14 @@ public class SeparatingQuestionManager : MonoBehaviour {
     }
 
     //答えが正しいかどうかをチェックする
+    public void CheckIfCorrect() {
+
+        if(leftCurrentNum == leftAnswerNum && rightCurrentNum == rightAnswerNum) {
+            for(int i = 0; i < characters.Length; i++) {
+                characters[i].GetComponent<StandHappyCharacter>().GoNextState();
+            }
+        }
+    }
 
     //questionObjectをシャッフルする
     public void QuestionShuffle() {

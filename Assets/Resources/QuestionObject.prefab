@@ -51,9 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9a8558e7f8e164d8d2983215d8fff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitNum: 2
-  leftFruitNum: 1
+  fruitNum: 4
+  leftFruitNum: 3
   rightFruitNum: 1
   fruitPos:
-  - {x: -0.5, y: -3.2, z: 0}
-  - {x: 0.5, y: -3.2, z: 0}
+  - {x: -2, y: -3.2, z: 0}
+  - {x: -1, y: -3.2, z: 0}
+  - {x: 1, y: -3.2, z: 0}
+  - {x: 2, y: -3.2, z: 0}

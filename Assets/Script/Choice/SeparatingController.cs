@@ -78,6 +78,8 @@ public class SeparatingController : MonoBehaviour {
 
     public void PointerUp() {
 
+        questonManger.GetComponent<SeparatingQuestionManager>().CheckIfCorrect();
+        Debug.Log("CheckIfCorrect");
     }
 
     public void OnTriggerEnter2D(Collider2D collision) {
