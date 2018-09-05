@@ -11,8 +11,8 @@ public class GoBackCharacter : MonoBehaviour {
     public GameObject choiceManager;
     public GameObject questionManager;
 
-    private GameObject target;      //停止場所
-    private float stopDistance;     //停止する距離
+    protected GameObject target;      //停止場所
+    protected float stopDistance;     //停止する距離
 
     //ジャンプ用のカウント
     protected int jumpNum = 0;
@@ -78,6 +78,7 @@ public class GoBackCharacter : MonoBehaviour {
 
             //キャラクターからターゲットまでの距離の絶対値
             float diff = Mathf.Abs(target.transform.position.x - transform.position.x);
+            Debug.Log(diff);
 
             //targetの近くまで歩き、十分近くなったら次のStateへ
             if (diff >= stopDistance) {
@@ -95,6 +96,7 @@ public class GoBackCharacter : MonoBehaviour {
 
     //PLAYステイト中にやること
     public virtual void PlayState() {
+        Debug.Log("PlayState is called");
 
     }
 

@@ -11,7 +11,7 @@ public class GroupingQuestionManager : MonoBehaviour {
     private int correctNum = 0;      //正解の数
     private bool isFinished = false;
 
-    public GroupingQuestionObject[] groupingQuestions;      //GroupingQuestionオブジェクトのプレハブ
+    private GroupingQuestionObject[] groupingQuestions;      //GroupingQuestionオブジェクトのプレハブ
 
     public GameObject leftBasket;     //左のかご
     public GameObject rightBasket;     //右のかご
@@ -149,10 +149,10 @@ public class GroupingQuestionManager : MonoBehaviour {
         //Resourcesからlevelに対応する問題を読みだして、objectArrayに入れる
         object[] objectArray = Resources.LoadAll(sceneName + "_" + GameManager.levelNum.ToString(), typeof(GroupingQuestionObject));
 
-        //selectingQuestionの配列の大きさを、呼び出した問題の配列数と揃える
+        //groupingQuestionの配列の大きさを、呼び出した問題の配列数と揃える
         System.Array.Resize(ref groupingQuestions, objectArray.Length);
 
-        //objectArrayの中身をselectingQuestionに入れる
+        //objectArrayの中身をgroupingQuestionに入れる
         for (int i = 0; i < objectArray.Length; i++) {
             groupingQuestions[i] = (GroupingQuestionObject)objectArray[i];
         }

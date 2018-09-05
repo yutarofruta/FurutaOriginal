@@ -15,6 +15,7 @@ TagManager:
   - rightCharacter
   - smallest
   - biggest
+  - answer
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - ground
   - fruit
   - character
-  - 
+  - animal
   - 
   - 
   - 

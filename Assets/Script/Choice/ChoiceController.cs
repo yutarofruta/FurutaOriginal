@@ -10,6 +10,8 @@ public class ChoiceController : MonoBehaviour {
     private Vector3 normalScale;
     private Vector3 expandedScale;
 
+    public GameObject currentCollision;
+
     // Use this for initialization
     void Start () {
 
@@ -36,7 +38,7 @@ public class ChoiceController : MonoBehaviour {
         transform.localScale = expandedScale;
 
         //最前面に出す
-        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 3;
 
         //オブジェクトがタッチについてくる
         if (Input.touchCount > 0) {
@@ -85,7 +87,7 @@ public class ChoiceController : MonoBehaviour {
         }
 
         //最前面に出す
-        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 3;
 
         //オブジェクトが触られている間は拡大
         transform.localScale = expandedScale;
@@ -104,6 +106,7 @@ public class ChoiceController : MonoBehaviour {
 
         //衝突した場所のタグとgameObjectのタグが等しければ、isCorrectをtrue
         if(collision.tag == gameObject.tag) {
+            currentCollision = collision.gameObject;
             isCorrect = true;
         }
     }
@@ -112,6 +115,8 @@ public class ChoiceController : MonoBehaviour {
 
         //衝突が終わったら、isCorrectをfalse
         isCorrect = false;
+
+        currentCollision = null;
     }
 
 }

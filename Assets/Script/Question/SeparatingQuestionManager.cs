@@ -63,6 +63,10 @@ public class SeparatingQuestionManager : MonoBehaviour {
             //今の対応する問題のデータを持ったquestionObjectを決める
             SeparatingQuestionObject questionObject = separatingQuestions[qNum - 1];
 
+            //吹き出しを消す
+            leftBalloon.gameObject.SetActive(true);
+            rightBalloon.gameObject.SetActive(true);
+
             //左右の果物の個数を取得する
             leftAnswerNum = questionObject.leftFruitNum;
             rightAnswerNum = questionObject.rightFruitNum;
@@ -112,6 +116,10 @@ public class SeparatingQuestionManager : MonoBehaviour {
             for(int i = 0; i < characters.Length; i++) {
                 characters[i].GetComponent<StandHappyCharacter>().GoNextState();
             }
+
+            //吹き出しを消す
+            leftBalloon.gameObject.SetActive(false);
+            rightBalloon.gameObject.SetActive(false);
         }
     }
 

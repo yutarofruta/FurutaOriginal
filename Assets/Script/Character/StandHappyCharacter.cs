@@ -9,6 +9,8 @@ public class StandHappyCharacter : MonoBehaviour {
 
     public GameObject questionManager;
 
+    private bool isPlaying = true;      //PlayState中かどうか
+
     public enum PlayerState {
         PLAY,   //回答中
         CLEAR,   //正解アニメーション中
@@ -31,7 +33,7 @@ public class StandHappyCharacter : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        Debug.Log(playerState);
+        //Debug.Log(playerState);
 
         switch (playerState) {
 
@@ -53,14 +55,11 @@ public class StandHappyCharacter : MonoBehaviour {
 
     public void ClearState() {
 
-        //現在のアニメーションステイトを記録
-        animInfo = anim.GetCurrentAnimatorStateInfo(0);
 
         //アニメーションが終わっていれば次のステイトに移る(次の問題のIdleに移る)
-        if (!animInfo.IsName("GrapeHappy")) {
-            GoNextState();
-            Debug.Log("GoNextState");
-        }
+        StartCoroutine("CheckAnimInfo");
+
+        
     }
 
     //次のステイトに移る
@@ -70,6 +69,9 @@ public class StandHappyCharacter : MonoBehaviour {
 
             //喜ぶアニメーションを実行
             anim.SetTrigger("HappyTrigger");
+
+            //PlayState中でないとする
+            isPlaying = false;
 
             return;
         }
@@ -86,6 +88,20 @@ public class StandHappyCharacter : MonoBehaviour {
 
             return;
         }
+    }
+
+    private IEnumerator CheckAnimInfo() {
+
+        yield return new WaitForSeconds(0.1f);
+
+        animInfo = anim.GetCurrentAnimatorStateInfo(0);
+
+        if (!animInfo.IsName("GrapeHappy") && !isPlaying) {
+            GoNextState();
+            Debug.Log("GoNextState");
+            isPlaying = true;
+        }
+
     }
 
 }
