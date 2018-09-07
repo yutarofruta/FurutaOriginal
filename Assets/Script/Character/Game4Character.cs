@@ -8,7 +8,8 @@ public class Game4Character : GoBackCharacter {
     public override void GoNextQuestion() {
         base.GoNextQuestion();
 
-        questionManager.GetComponent<SharingQuestionManager>().GoNextQuestion();
+        //この問題ではキャラクターが多数いるため、直接GoNextQuestionは呼ばず、questionMangaerのleftCharacterNumがキャラクター数と同じになったらGoNextQuestionが呼ばれるようにする
+        questionManager.GetComponent<SharingQuestionManager>().CountLeftCharacterNum();
     }
 
     //WAITステイト中にやること

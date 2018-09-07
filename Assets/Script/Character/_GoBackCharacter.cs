@@ -126,7 +126,7 @@ public class GoBackCharacter : MonoBehaviour {
     public virtual void LeaveState() {
         
         //画面から出たら果物を消して、WAITに移る
-        if (GetComponent<Renderer>().isVisible) {
+        if (transform.position.x > -13 && transform.position.x < 13) {
             transform.Translate(0.1f, 0, 0, Space.Self);
         }
         else {

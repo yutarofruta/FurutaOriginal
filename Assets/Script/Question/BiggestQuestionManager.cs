@@ -56,6 +56,7 @@ public class BiggestQuestionManager : MonoBehaviour {
 
         //一問目でなければ、残った果物を消去する
         if (qNum != 1) {
+
             for (int i = 0; i < fruits.Length; i++) {
                 Destroy(fruits[i]);
             }

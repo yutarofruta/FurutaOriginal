@@ -412,6 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTouchable: 1
   isCorrect: 0
+  currentCollision: {fileID: 0}
 --- !u!1 &201865024
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,6 +917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTouchable: 1
   isCorrect: 0
+  currentCollision: {fileID: 0}
 --- !u!58 &1344531938
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1124,6 +1126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTouchable: 1
   isCorrect: 0
+  currentCollision: {fileID: 0}
 --- !u!1 &1370656552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,6 +1242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTouchable: 1
   isCorrect: 0
+  currentCollision: {fileID: 0}
 --- !u!231 &1604396256
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -1459,6 +1463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTouchable: 1
   isCorrect: 0
+  currentCollision: {fileID: 0}
 --- !u!1 &1617374022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,6 +1578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTouchable: 1
   isCorrect: 0
+  currentCollision: {fileID: 0}
 --- !u!231 &1653700920
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -1793,6 +1799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTouchable: 1
   isCorrect: 0
+  currentCollision: {fileID: 0}
 --- !u!1 &1687135074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1888,6 +1895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTouchable: 1
   isCorrect: 0
+  currentCollision: {fileID: 0}
 --- !u!58 &1687135078
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2065,6 +2073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTouchable: 1
   isCorrect: 0
+  currentCollision: {fileID: 0}
 --- !u!1 &1829107129
 GameObject:
   m_ObjectHideFlags: 0

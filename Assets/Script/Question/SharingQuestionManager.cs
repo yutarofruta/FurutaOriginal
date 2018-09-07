@@ -9,6 +9,7 @@ public class SharingQuestionManager : MonoBehaviour {
     private int qNum = 1;    　//問題番号
     private int maxNum;     //問題数(QuestionObjectの数)
     private int correctNum = 0;      //正解の数
+    private int leftCharacterNum;       //leaveしたキャラクターの数。前の問題のキャラクター数と一致したときのみGoNextQuestionを呼ぶようにする
     private bool isFinished = false;        //クリアしているかどうか
 
     private SharingQuestionObject[] sharingQuestions;      //SharingQuestionオブジェクトのプレハブ
@@ -45,6 +46,18 @@ public class SharingQuestionManager : MonoBehaviour {
         //ゲームメニューに戻る
         if (isFinished && Input.GetMouseButton(0)) {
             SceneManager.LoadScene("GameMenu");
+        }
+    }
+
+    public void CountLeftCharacterNum() {
+
+        leftCharacterNum++;
+
+        if(leftCharacterNum < animals.Length) {
+            return;
+        }
+        else {
+            GoNextQuestion();
         }
     }
 
@@ -95,6 +108,9 @@ public class SharingQuestionManager : MonoBehaviour {
             for(int i = 0; i < animals.Length; i++) {
                 animals[i].GetComponent<Game4Character>().SetMoveTarget(targets[i], 1f);
             }
+
+            //GoNextQuestionの発破のために数えていたleftCharacterNumを0に初期化
+            leftCharacterNum = 0;
         }
         else {
             //終了
