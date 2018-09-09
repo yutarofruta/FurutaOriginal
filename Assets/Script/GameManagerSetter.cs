@@ -9,6 +9,7 @@ public class GameManagerSetter : MonoBehaviour {
     private bool isCreated;     //GameManagerオブジェクトが既に生成されたかどうか
 
     private void Awake() {
+
         isCreated = GameManager.created;        //GameManagerが生成されているかどうか確認
 
         //もしまだ生成していなければGameManagerを生成する
